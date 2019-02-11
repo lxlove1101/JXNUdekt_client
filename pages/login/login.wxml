@@ -1,0 +1,58 @@
+<!--pages/login/login.wxml-->
+<view>
+  <!-- 加载动画 -->
+  <view class="remind-box" wx:if="{{remind}}">
+    <image class="remind-img" src="../../images/login/loading.gif"></image>
+  </view>
+  <!-- 内容 -->
+  <block wx:else>
+    <!-- <image class="title" src="../../images/login/title.png" style='border:0px solid red'></image> -->
+    <image src='../../images/login/timg.jpg'></image>
+    <image src='../../images/login/jxnu_logo.png' class = "bottom_logo"></image>
+    <view class="content">
+      <!-- 波动特效 -->
+      <!-- <view class="hd" style="transform:rotateZ({{angle}}deg);">
+        <image class="logo" src="../../images/login/jxnu_logo.png"></image>
+        <image class="wave" src="../../images/login/wave.png" mode="aspectFill"></image>
+        <image class="wave wave-bg" src="../../images/login/wave.png" mode="aspectFill"></image>
+      </view> -->
+      <!-- 输入表单 -->
+      <view class="bd">
+        <form class="login-form">
+          <view class="input-group {{userid_focus ? 'active' : ''}}">
+            <text class="input-label" style='font-size:30rpx;'>帐号</text>
+            <input type="text" id="userid" placeholder="学号 " placeholder-style='font-size:30rpx;' bindinput="userInput" bindfocus="inputFocus" bindblur="inputBlur" />
+          </view>
+          <view class="input-group {{passwd_focus ? 'active' : ''}}">
+            <text class="input-label" style='font-size:30rpx;'>密码</text>
+            <input type="password" id="passwd" placeholder="密码" placeholder-style='font-size:30rpx;' bindinput="pwdInput" bindfocus="inputFocus" bindblur="inputBlur" />
+          </view>
+          <view class="login-help" bindtap="showHelp">
+            <text>帮助</text>
+            <image class="login-help-img" src="../../images/login/help.png"></image>
+          </view>
+        </form>
+        <button class="confirm-btn" bindtap="login">
+          立即登录
+        </button>
+      </view>
+      <!-- 帮助窗口 -->
+      <view class="help" id="help" wx:if="{{help_status}}" bindtap="tapHelp">
+        <view class="box">
+          <view class="box-hd">
+            <text class="box-title">帮助</text>
+            <image class="box-close" src="../../images/login/close.png" bindtap="hideHelp"></image>
+          </view>
+          <view class="box-bd">
+            <view class="help-q">帐号和密码是什么？</view>
+            <view class="help-a">
+              <text>帐号：学号, 例如:201526702000</text>
+              <text>密码：初始密码或者已更改密码</text>
+              <text>其中初始密码与个人身份证号码相关，采用以下规则：①身份证号码：取最后6位作为密码；②身份证号码最后一位是x的默认大写；</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view><!--contentEnd-->
+  </block>
+</view>

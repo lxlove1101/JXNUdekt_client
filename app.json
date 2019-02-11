@@ -1,12 +1,15 @@
 {
-  "pages":[
+  "pages": [
+    "pages/login/login",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/container/container"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#962F30",
+    "navigationBarTitleText": "江西师范大学第二课堂",
+    "navigationBarTextStyle": "white"
   }
+  
 }
