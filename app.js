@@ -33,6 +33,14 @@ App({
       }
     })
   },
+  onError(msg) {
+    console.log(msg);
+  }, 
+  onPageNotFound(res) {
+    // wx.redirectTo({
+    //   url: 'pages/...'
+    // }) // 如果是 tabbar 页面，请使用 wx.switchTab
+  },
   globalData: {
     userInfo: null
   }

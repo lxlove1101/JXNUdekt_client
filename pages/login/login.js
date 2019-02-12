@@ -11,41 +11,82 @@ Page({
     userid: '',
     passwd: ''
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
     var _this = this;
-    setTimeout(function () {
+    setTimeout(function() {
       _this.setData({
         remind: ''
       });
     }, 1000);
   },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function() {
+
+  },
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function() {
+
+  },
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function() {
+
+  },
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function() {
+
+  },
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function() {
+
+  },
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function() {
+
+  },
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function() {
+
+  },
+
   //监听账号登录
-  userInput: function (e) {
+  userInput: function(e) {
     this.data.username = e.detail.value;
   },
-  pwdInput: function (e) {
+  pwdInput: function(e) {
     this.data.password = e.detail.value;
   },
-  login: function () {
+  login: function() {
     // 登录接口
     if (this.data.username == undefined || this.data.password == undefined) {
       wx.showModal({
         title: '登录提示',
         content: '账号或密码不能为空,请重新输入',
-        success: function (res) {
+        success: function(res) {
           if (res.confirm) {
-            console.log('用户点击确定')
+            console.log('用户点击确定开始登录验证')
           }
         }
       })
     } else {
       wx.request({
-        url: `${getApp().data.url}business/login`,
-        // url: "https://meetmecar.com/3e-platform-intf/ws/business/login",
+        url: '${getApp().data.url}business/login',
         method: 'POST',
         data: {
           "params": {
@@ -56,7 +97,7 @@ Page({
         header: {
           "Content-Type": "application/json"
         },
-        success: function (res) {
+        success: function(res) {
           // 保存sessionid和userName
           console.log(res.data)
           getApp().data.sessionId = res.data.object.sessionId
@@ -83,7 +124,7 @@ Page({
             wx.showModal({
               title: '登录提示',
               content: '网络异常',
-              success: function (res) {
+              success: function(res) {
                 if (res.confirm) {
                   console.log('用户点击确定')
                 }
@@ -94,7 +135,7 @@ Page({
               wx.showModal({
                 title: '登录提示',
                 content: '用户名或密码错误，请重新登录',
-                success: function (res) {
+                success: function(res) {
                   if (res.confirm) {
                     console.log('用户点击确定')
                   }
@@ -112,22 +153,16 @@ Page({
             }
           }
         },
-        fail: function (err) {
+        fail: function(err) {
 
         },
-        complete: function (data) {
+        complete: function(data) {
 
         }
       })
     }
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function () {
-
-  },
-  inputFocus: function (e) {
+  inputFocus: function(e) {
     if (e.target.id == 'userid') {
       this.setData({
         'userid_focus': true
@@ -138,7 +173,7 @@ Page({
       });
     }
   },
-  inputBlur: function (e) {
+  inputBlur: function(e) {
     if (e.target.id == 'userid') {
       this.setData({
         'userid_focus': false
@@ -149,17 +184,17 @@ Page({
       });
     }
   },
-  showHelp: function (e) {
+  showHelp: function(e) {
     this.setData({
       'help_status': true
     });
   },
-  hideHelp: function (e) {
+  hideHelp: function(e) {
     this.setData({
       'help_status': false
     });
   },
-  btn: function () {
+  btn: function() {
     wx.request({
       url: "https://scx.eurasia.edu:81/mtmc-wx/ws/business/phoneCodeQry/",
       method: 'POST',
@@ -172,61 +207,19 @@ Page({
       header: {
         "Content-Type": "application/json"
       },
-      success: function (res) {
+      success: function(res) {
         console.log(res.data);
         wx.showToast({
           title: '获取验证码成功',
           duration: 2000
         })
       },
-      fail: function (err) {
+      fail: function(err) {
         console.log(err)
       },
-      complete: function (data) {
+      complete: function(data) {
         console.log(data)
       }
     });
-  },
-  
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

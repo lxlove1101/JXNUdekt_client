@@ -1,21 +1,24 @@
 <!--pages/login/login.wxml-->
 <view>
-  <!-- 加载动画 -->
-  <view class="remind-box" wx:if="{{remind}}">
-    <image class="remind-img" src="../../images/login/loading.gif"></image>
+  <!-- 加载动画IF -->
+  <view wx:if="{{remind}}">
+    <view class='animBody'>
+      <view class="loader">
+        <view class="face">
+          <view class="circle"></view>
+        </view>
+        <view class="face">
+          <view class="circle"></view>
+        </view>
+      </view>
+    </view>
   </view>
-  <!-- 内容 -->
+  
+  <!-- 内容ELSE -->
   <block wx:else>
-    <!-- <image class="title" src="../../images/login/title.png" style='border:0px solid red'></image> -->
     <image src='../../images/login/timg.jpg'></image>
-    <image src='../../images/login/jxnu_logo.png' class = "bottom_logo"></image>
+    <image src='../../images/login/jxnu_logo.png' class="bottom_logo"></image>
     <view class="content">
-      <!-- 波动特效 -->
-      <!-- <view class="hd" style="transform:rotateZ({{angle}}deg);">
-        <image class="logo" src="../../images/login/jxnu_logo.png"></image>
-        <image class="wave" src="../../images/login/wave.png" mode="aspectFill"></image>
-        <image class="wave wave-bg" src="../../images/login/wave.png" mode="aspectFill"></image>
-      </view> -->
       <!-- 输入表单 -->
       <view class="bd">
         <form class="login-form">
@@ -53,6 +56,8 @@
           </view>
         </view>
       </view>
-    </view><!--contentEnd-->
+    </view>
+    <!--contentEnd-->
   </block>
+
 </view>
