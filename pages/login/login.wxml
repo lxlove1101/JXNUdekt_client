@@ -16,7 +16,7 @@
   
   <!-- 内容ELSE -->
   <block wx:else>
-    <image src='../../images/login/timg.jpg'></image>
+    <image src='../../images/login/bg1.jpg'></image>
     <image src='../../images/login/jxnu_logo.png' class="bottom_logo"></image>
     <view class="content">
       <!-- 输入表单 -->

@@ -1,6 +1,17 @@
 //app.js
 App({
-  onLaunch: function () {
+  data: {
+    url: 'http://localhost/API/',
+    userName: '',
+    sessionId: '',
+    fyId: '',
+    shequId: '',
+    rxTime: '',
+    userType: '',
+    realname: '',
+    isSuccess: false
+  },
+  onLaunch: function() {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -35,7 +46,7 @@ App({
   },
   onError(msg) {
     console.log(msg);
-  }, 
+  },
   onPageNotFound(res) {
     // wx.redirectTo({
     //   url: 'pages/...'
