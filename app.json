@@ -1,15 +1,50 @@
 {
   "pages": [
-    "pages/login/login",
     "pages/index/index",
+    "pages/login/login",
     "pages/logs/logs",
-    "pages/container/container"
+    "pages/user/user",
+    "pages/search/search",
+    "pages/activity/activity"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#962F30",
     "navigationBarTitleText": "江西师范大学第二课堂",
     "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#962F30",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/tab/index.png",
+        "selectedIconPath": "images/tab/index_selected.png"
+      },
+      {
+        "pagePath": "pages/activity/activity",
+        "text": "活动",
+        "iconPath": "images/tab/activity.png",
+        "selectedIconPath": "images/tab/activity_selected.png"
+      },
+      {
+        "pagePath": "pages/search/search",
+        "text": "搜索",
+        "iconPath": "images/tab/search.png",
+        "selectedIconPath": "images/tab/search_selected.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "images/tab/my.png",
+        "selectedIconPath": "images/tab/my_selected.png"
+      }
+    ]
   },
   "debug": true,
   "networkTimeout": {
@@ -18,5 +53,4 @@
     "uploadFile": 10000,
     "downloadFile": 10000
   }
-  
 }

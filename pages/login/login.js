@@ -146,7 +146,7 @@ Page({
                 title: '登录成功',
                 duration: 2000,
                 mask: true,
-                complete: wx.redirectTo({
+                complete: wx.switchTab({
                   url: '../index/index',
                 })
               })
