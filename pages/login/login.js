@@ -1,4 +1,6 @@
 // pages/login/login.js
+const app = getApp();
+
 Page({
   /**
    * 页面的初始数据
@@ -9,7 +11,7 @@ Page({
     userid_focus: false,
     passwd_focus: false,
     userid: '',
-    passwd: ''
+    passwd: '',
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -26,7 +28,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function() {
-
+    var _this = this;
   },
   /**
    * 生命周期函数--监听页面显示
@@ -142,6 +144,7 @@ Page({
                 }
               })
             } else if (res.data.data.content.length == 1) {
+              app.data.userInfo = res.data.data.content[0];
               wx.showToast({
                 title: '登录成功',
                 duration: 2000,
@@ -149,8 +152,7 @@ Page({
                 complete: wx.switchTab({
                   url: '../index/index',
                 })
-              })
-
+              });
             }
           }
         },

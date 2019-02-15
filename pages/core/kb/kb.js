@@ -53,9 +53,9 @@ Page({
   },
   onLoad: function(options){
     var _this = this;
-    app.loginLoad(function(){
-      _this.loginHandler.call(_this, options);
-    });
+    // app.loginLoad(function(){
+    //   _this.loginHandler.call(_this, options);
+    // });
   },
   //让分享时自动登录
   loginHandler: function(options){

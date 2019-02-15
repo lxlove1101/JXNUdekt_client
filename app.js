@@ -2,14 +2,7 @@
 App({
   data: {
     url: 'http://localhost/API/',
-    userName: '',
-    sessionId: '',
-    fyId: '',
-    shequId: '',
-    rxTime: '',
-    userType: '',
-    realname: '',
-    isSuccess: false
+    userInfo: {}
   },
   onLaunch: function() {
     // 展示本地存储能力
@@ -54,5 +47,13 @@ App({
   },
   globalData: {
     userInfo: null
-  }
+  },
+
+  util: require('./utils/util'),
+  key: function(data) {
+    return this.util.key(data)
+  },
+  enCodeBase64: function(data) {
+    return this.util.base64.encode(data)
+  },
 })
