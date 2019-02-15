@@ -1,54 +1,36 @@
 //index.js
-//获取应用实例
 const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
-  },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
-  },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
+    imgUrls: [
+      '../../images/index_swiper/img1.jpg',
+      '../../images/index_swiper/img2.jpg',
+      '../../images/index_swiper/img3.jpg'
+    ],
+    remind: '加载中',
+    pic_indicatorDots: true,
+    pic_autoplay: true,
+    pic_circular: true,
+    pic_interval: 3000,
+    pic_duration: 1000,
+    cores: [
+      [
+        { id: 'kb', name: '课表查询'},
+        { id: 'cj', name: '成绩查询'},
+        { id: 'ks', name: '考试安排'},
+        { id: 'kjs', name: '空教室'},
+        { id: 'xs', name: '学生查询'},
+        { id: 'ykt', name: '一卡通'},
+        { id: 'jy', name: '借阅信息'},
+        { id: 'xf', name: '学费信息'},
+        { id: 'sdf', name: '电费查询'},
+        { id: 'bx', name: '物业报修'}
+      ], [
+        { id: 'cet', name: '四六级'},
+        { id: 'fw', name: "志愿活动"}
+      ]
+    ]
   }
+  
 })

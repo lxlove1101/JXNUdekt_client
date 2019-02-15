@@ -1,21 +1,58 @@
 /**index.wxss**/
-.userinfo {
+page{
+  background-color: #ececec83;
+}
+.swiper-item{
+  display: block;
+  height: 150px;
+  width:100%;
+}
+.container{
+  height: 100%;
+  background-color: white;
+  padding-bottom: 0;
+  background-repeat: no-repeat;
+  background-size: 100% auto; 
+  background-position: bottom center;
+}
+/**功能导航**/
+.main-core{
   display: flex;
-  flex-direction: column;
+  flex-flow: row wrap;
+  align-content: flex-start;
+  background: #fff;
+  border-bottom: 1rpx solid #e5e5e5;
+  padding: 15rpx 10rpx 10rpx;
+  min-height: 350rpx;
+  overflow: hidden;
+}
+.main-core-item{
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
   align-items: center;
+  box-sizing: border-box;
+  width: 20%;
+  height: 170rpx;
 }
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.main-core-item.disabled{
+  color: #9c9c9c;
 }
-
-.userinfo-nickname {
-  color: #aaa;
+.core-item-icon{
+  display: block;
+  width: 85rpx;
+  height: 85rpx;
+  margin: 15rpx auto;
 }
-
-.usermotto {
-  margin-top: 200px;
+.core-item-name{
+  display: block;
+  margin: 5rpx;
+}
+.main-swpier{
+  height:390rpx;
+  margin-bottom:20rpx;
+}
+.main-swpier .wx-swiper-dots.wx-swiper-dots-horizontal{
+  bottom: 0;
+  margin-bottom: -5rpx;
 }

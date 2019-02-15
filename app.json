@@ -5,7 +5,22 @@
     "pages/logs/logs",
     "pages/user/user",
     "pages/search/search",
-    "pages/activity/activity"
+    "pages/activity/activity",
+    "pages/core/kb/kb",
+    "pages/core/cj/cj",
+    "pages/core/ks/ks",
+    "pages/core/kjs/kjs",
+    "pages/core/xs/xs",
+    "pages/core/ykt/ykt",
+    "pages/core/jy/jy",
+    "pages/core/xf/xf",
+    "pages/core/sdf/sdf",
+    "pages/core/bx/bx",
+    "pages/core/bx/bx_apply",
+    "pages/core/bx/bx_detail",
+    "pages/core/cet/cet",
+    "pages/core/cet/result",
+    "pages/core/fw/fw"
   ],
   "window": {
     "backgroundTextStyle": "light",
