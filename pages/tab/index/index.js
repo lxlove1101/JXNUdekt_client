@@ -4,9 +4,9 @@ const app = getApp()
 Page({
   data: {
     imgUrls: [
-      '../../images/index_swiper/img1.jpg',
-      '../../images/index_swiper/img2.jpg',
-      '../../images/index_swiper/img3.jpg'
+      '../../../images/index_swiper/img1.jpg',
+      '../../../images/index_swiper/img2.jpg',
+      '../../../images/index_swiper/img3.jpg'
     ],
     remind: '加载中',
     pic_indicatorDots: true,

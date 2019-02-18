@@ -150,7 +150,7 @@ Page({
                 duration: 2000,
                 mask: true,
                 complete: wx.switchTab({
-                  url: '../index/index',
+                  url: '../tab/index/index',
                 })
               });
             }

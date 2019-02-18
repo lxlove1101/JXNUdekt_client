@@ -3,14 +3,44 @@ const app = getApp();
 
 Page({
   data: {
-
+    userDetail: {},
+    headImg: '../../../images/my/headImg.jpg',
+    menu: [
+      {
+        tag: 'setting',
+        name: '设置'
+      },
+      {
+        tag: 'contact_us',
+        name: '联系我们'
+      }
+    ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var _this = this;
+    wx.request({
+      url: app.data.url + '/FIND_USER_DETAIL_INFO_BY_ID/' + app.data.userInfo.userId,
+      method: 'GET',
+      success: res => {
+        console.log(res);
+        _this.setData(
+          {
+            userDetail: res.data.data.content[0]
+          }
+        );
+        console.log(_this.data.userDetail);
+      },
+      fail: res => {
 
+      },
+      complete: res => {
+
+      }
+    });
   },
 
   /**
