@@ -58,9 +58,4 @@ App({
     return this.util.base64.encode(data)
   },
 
-  // 清除全局数据
-  clearData: function(){
-    this.userInfo = {};
-    console.log("执行清除数据函数, 结果appData: " + JSON.stringify(this.data));
-  },
 })

@@ -1,5 +1,6 @@
 // pages/my/my.js
 const app = getApp();
+const util = require('../../../utils/util.js');
 
 Page({
   data: {
@@ -93,7 +94,7 @@ Page({
   // 退出登录点击事件
   exit: function() {
     console.log("用户退出了登录");
-    app.clearData();
+    util.pageUtil.clearGlobalData();
     wx.redirectTo({
       url: '../../login/login',
       success: res => {
