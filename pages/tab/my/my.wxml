@@ -7,16 +7,19 @@
   </view>
   <!-- 菜单选项 -->
   <view class="menu-list" wx:for="{{menu}}" wx:key="*this">
-      <navigator url="{{'pages/menu/' + item.tag + '/' + item.tag}}" class="issue-link">
-        <view class="menu-btn">
-          <image class="btn-icon" src="/images/menu/{{item.tag}}.png"></image>
-          <text class="btn-text">{{item.name}}</text>
-          <view class="btn-open">
-            <image class="btn-enter" src="/images/menu/enter.png"></image>
-          </view>
+    <navigator url="{{'pages/menu/' + item.tag + '/' + item.tag}}" class="issue-link">
+      <view class="menu-btn">
+        <image class="btn-icon" src="/images/menu/{{item.tag}}.png"></image>
+        <text class="btn-text">{{item.name}}</text>
+        <view class="btn-open">
+          <image class="btn-enter" src="/images/menu/enter.png"></image>
         </view>
-      </navigator>
+      </view>
+    </navigator>
   </view>
-
+  <!-- 退出选项 -->
+  <button bindtap='exit' type='warn' size='default'>
+    <text>退出登录</text>
+  </button>
 
 </view>

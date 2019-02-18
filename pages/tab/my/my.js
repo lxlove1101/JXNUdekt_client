@@ -5,8 +5,7 @@ Page({
   data: {
     userDetail: {},
     headImg: '../../../images/my/headImg.jpg',
-    menu: [
-      {
+    menu: [{
         tag: 'setting',
         name: '设置'
       },
@@ -20,18 +19,16 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     var _this = this;
     wx.request({
       url: app.data.url + '/FIND_USER_DETAIL_INFO_BY_ID/' + app.data.userInfo.userId,
       method: 'GET',
       success: res => {
         console.log(res);
-        _this.setData(
-          {
-            userDetail: res.data.data.content[0]
-          }
-        );
+        _this.setData({
+          userDetail: res.data.data.content[0]
+        });
         console.log(_this.data.userDetail);
       },
       fail: res => {
@@ -46,14 +43,14 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     const _this = this;
     console.log(app.data.userInfo);
   },
@@ -61,35 +58,51 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
-  }
+  },
+
+  // 退出登录点击事件
+  exit: function() {
+    console.log("用户退出了登录");
+    app.clearData();
+    wx.redirectTo({
+      url: '../../login/login',
+      success: res => {
+        console.log(res);
+      },
+      fail: res => {
+        console.log(res);
+      },
+    });
+  },
+
 })
