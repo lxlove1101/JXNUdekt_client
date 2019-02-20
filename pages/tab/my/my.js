@@ -22,23 +22,26 @@ Page({
    */
   onLoad: function(options) {
     var _this = this;
-    wx.request({
-      url: app.data.url + '/FIND_USER_DETAIL_INFO_BY_ID/' + app.data.userInfo.userId,
-      method: 'GET',
-      success: res => {
-        console.log(res);
-        _this.setData({
-          userDetail: res.data.data.content[0]
-        });
-        console.log(_this.data.userDetail);
-      },
-      fail: res => {
+    const userId = app.data.userInfo.userId;
+    if (userId) {
+      wx.request({
+        url: app.data.url + '/FIND_USER_DETAIL_INFO_BY_ID/' + userId,
+        method: 'GET',
+        success: res => {
+          console.log(res);
+          _this.setData({
+            userDetail: res.data.data.content[0]
+          });
+          console.log(_this.data.userDetail);
+        },
+        fail: res => {
 
-      },
-      complete: res => {
+        },
+        complete: res => {
 
-      }
-    });
+        }
+      });
+    }
   },
 
   /**
@@ -89,6 +92,14 @@ Page({
    */
   onShareAppMessage: function() {
 
+  },
+
+  editEvent: function(){
+    console.log("用户点击编辑个人信息");
+    var _this = this;
+    wx.navigateTo({
+      url: './editInfo/editInfo?data='+JSON.stringify(_this.data.userDetail),
+    });
   },
 
   // 退出登录点击事件

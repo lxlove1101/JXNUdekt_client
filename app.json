@@ -20,7 +20,8 @@
     "pages/core/bx/bx_detail",
     "pages/core/cet/cet",
     "pages/core/cet/result",
-    "pages/core/fw/fw"
+    "pages/core/fw/fw",
+    "pages/tab/my/editInfo/editInfo"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,9 @@
+/* pages/tab/my/editInfo/editInfo.wxss */
+.page-body {
+  width: 100%;
+  flex-grow: 1;
+  overflow-x: hidden;
+}
+.page-section{
+  margin-bottom: 20rpx;
+}

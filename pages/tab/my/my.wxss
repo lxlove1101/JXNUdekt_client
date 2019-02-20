@@ -23,6 +23,10 @@ page{
 .userinfo-nickname {
 	color: #fff;
 }
+.userinfo-tip{
+  color: rgb(230, 230, 230);
+  font-size: 9pt;
+}
 /* 菜单列表样式 */
 /* .menu-list{
   z-index: -1;

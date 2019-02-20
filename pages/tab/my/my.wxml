@@ -1,9 +1,10 @@
 <!--pages/my/my.wxml-->
 <view class="container">
   <!-- 个人头部名片 -->
-  <view bindtap="bindViewTap" class="userinfo">
+  <view class="userinfo">
     <image class="userinfo-avatar" src="{{ headImg }}" background-size="cover"></image>
     <text class="userinfo-nickname">{{ userDetail.username }}</text>
+    <text bindtap="editEvent" class="userinfo-tip">>编辑个人信息</text>
   </view>
   <!-- 菜单选项 -->
   <view class="menu-list" wx:for="{{menu}}" wx:key="*this">
