@@ -21,11 +21,25 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function() {
     var _this = this;
-    const userId = app.data.userInfo.userId;
-    if (userId) {
+    const id = app.data.userInfo.id;
+    if (id) {
       wx.request({
-        url: app.data.url + '/FIND_USER_DETAIL_INFO_BY_ID/' + userId,
+        url: app.data.url + '/FIND_USER_DETAIL_INFO_BY_ID/' + id,
         method: 'GET',
         success: res => {
           console.log(res);
@@ -42,21 +56,6 @@ Page({
         }
       });
     }
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-    const _this = this;
-    console.log(app.data.userInfo);
   },
 
   /**

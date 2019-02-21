@@ -6,11 +6,12 @@ Page({
    */
   data: {
     userDetail: {},
-    pwdStatus: false,
+    pwdStatus: true,
     telephone: "",
     email: ""
   },
 
+  // 隐藏和显示密码
   showHidePwd: function() {
     var _this = this;
     if (_this.data.pwdStatus) {
@@ -23,35 +24,80 @@ Page({
       });
     }
   },
-
+  // 监听手机号码输入事件
   inputTel: function(e) {
     var _this = this;
     _this.setData({
       telephone: e.detail.value
     });
   },
-
+  // 监听电子邮件输入事件
   inputEmail: function(e) {
     var _this = this;
     _this.setData({
       email: e.detail.value
     });
   },
-
+  // 清除手机号码输入框
   clearTel: function() {
     var _this = this;
     _this.setData({
       telephone: ""
     });
   },
-
+  // 清除电子邮件输入框
   clearEmail: function() {
     var _this = this;
     _this.setData({
       email: ""
     });
   },
-
+  // 表单提交
+  formSubmit: function(event){
+    var _this = this;
+    console.log('数据库表对应的主键id', _this.data.userDetail.id);
+    console.log('提交了修改个人信息的表单，携带数据为：', event.detail.value);
+    wx.request({
+      url: getApp().data.url + 'UPDATE_USER_INFO_FOR_ONE',
+      method: 'POST',
+      header: {
+        "Content-Type": "application/json"
+      },
+      data: {
+        "id": _this.data.userDetail.id,
+        "email": event.detail.value.email,
+        "password": event.detail.value.password,
+        "telephone": event.detail.value.telephone,
+      },
+      success: res => {
+        console.log(res);
+        if(res.data.code == 'SUCCESS'){
+          wx.showToast({
+            title: '修改成功',
+            duration: 1000,
+            mask: true,
+            complete: wx.navigateBack({
+              delta: 1
+            })
+          });
+        }else{
+          wx.showToast({
+            title: '保存失败',
+            duration: 1000,
+            mask: true,
+            icon: 'none'
+          });
+        }
+      },
+      fail: err => {
+        console.log(err);
+      },
+      complete: data => {
+        console.log(getApp().data.url + 'UPDATE_USER_INFO_FOR_ONE');
+        console.log(data);
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */

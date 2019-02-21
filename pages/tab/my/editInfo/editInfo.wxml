@@ -2,77 +2,77 @@
 <view class="container">
 
   <view class="page-body">
-    <view class="page-section">
-      <view class="weui-cells__title">姓名</view>
-      <view class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_input">
-          <input class="weui-input" value="{{userDetail.username}}" disabled='true'/>
+    <form bindsubmit='formSubmit'>
+      <view class="page-section">
+        <view class="weui-cells__title">姓名</view>
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <input name='usesrname' class="weui-input" value="{{userDetail.username}}" disabled='true' />
+          </view>
         </view>
       </view>
-    </view>
-    <view class="page-section">
-      <view class="weui-cells__title">学号</view>
-      <view class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_input">
-          <input class="weui-input" value="{{userDetail.userId}}" disabled='true'/>
+      <view class="page-section">
+        <view class="weui-cells__title">学号</view>
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <input name='userId' class="weui-input" value="{{userDetail.userId}}" disabled='true' />
+          </view>
         </view>
       </view>
-    </view>
-    <view class="page-section">
-      <view class="weui-cells__title">性别</view>
-      <view class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_input">
-          <input class="weui-input" value="{{userDetail.sex==0?'男':'女'}}" disabled='true'/>
+      <view class="page-section">
+        <view class="weui-cells__title">性别</view>
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <input name='sex' class="weui-input" value="{{userDetail.sex==0?'男':'女'}}" disabled='true' />
+          </view>
         </view>
       </view>
-    </view>
-    <view class="page-section">
-      <view class="weui-cells__title">学院</view>
-      <view class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_input">
-          <input class="weui-input" value="{{userDetail.collegeName}}" disabled='true'/>
+      <view class="page-section">
+        <view class="weui-cells__title">学院</view>
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <input name='collegeName' class="weui-input" value="{{userDetail.collegeName}}" disabled='true' />
+          </view>
         </view>
       </view>
-    </view>
-    <view class="page-section">
-      <view class="weui-cells__title">班级</view>
-      <view class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_input">
-          <input class="weui-input" value="{{userDetail.className}}" disabled='true'/>
+      <view class="page-section">
+        <view class="weui-cells__title">班级</view>
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <input name='className' class="weui-input" value="{{userDetail.className}}" disabled='true' />
+          </view>
         </view>
       </view>
-    </view>
-    <view class="page-section">
-      <view class="weui-cells__title">密码</view>
-      <view class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_input">
-          <input class="weui-input" password='{{pwdStatus}}' value="{{userDetail.password}}" />
-          <image class='after-btn' src="{{pwdStatus?'/images/my/browse.png':'/images/my/browse_fill.png'}}" bindtap='showHidePwd'></image>
+      <view class="page-section">
+        <view class="weui-cells__title">密码</view>
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <input name='password' class="weui-input" password='{{pwdStatus}}' value="{{userDetail.password}}" />
+            <image class='after-btn' src="{{pwdStatus?'/images/my/browse.png':'/images/my/browse_fill.png'}}" bindtap='showHidePwd'></image>
+          </view>
         </view>
       </view>
-    </view>
-    <view class="page-section">
-      <view class="weui-cells__title">手机号码</view>
-      <view class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_input">
-          <input class="weui-input" maxlength="11" type="number" bindinput='inputTel' value="{{telephone}}" placeholder="请输入手机号码"/>
-          <image class='after-btn' src="/images/my/clear.png" bindtap='clearTel'></image>
+      <view class="page-section">
+        <view class="weui-cells__title">手机号码</view>
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <input name='telephone' class="weui-input" maxlength="11" type="number" bindinput='inputTel' value="{{telephone}}" placeholder="请输入手机号码" />
+            <image class='after-btn' src="/images/my/clear.png" bindtap='clearTel'></image>
+          </view>
         </view>
       </view>
-    </view>
-    <view class="page-section">
-      <view class="weui-cells__title">邮件地址</view>
-      <view class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_input">
-          <input class="weui-input" bindinput='inputEmail' value="{{email}}" placeholder="请输入电子邮件地址" />
-          <image class='after-btn' src="/images/my/clear.png" bindtap='clearEmail'></image>
+      <view class="page-section">
+        <view class="weui-cells__title">邮件地址</view>
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <input name='email' class="weui-input" bindinput='inputEmail' value="{{email}}" placeholder="请输入电子邮件地址" />
+            <image class='after-btn' src="/images/my/clear.png" bindtap='clearEmail'></image>
+          </view>
         </view>
       </view>
-    </view>
-    <text>\n</text>
-    <button type='primary'>保\t存</button>
-
+      <text>\n</text>
+      <button form-type='submit' type='primary'>保\t存</button>
+    </form>
   </view>
 
 </view>
-
