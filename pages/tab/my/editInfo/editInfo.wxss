@@ -7,3 +7,8 @@
 .page-section{
   margin-bottom: 20rpx;
 }
+.after-btn{
+  width: 50rpx;
+  height: 50rpx;
+  margin-left: 250rpx;
+}
