@@ -6,49 +6,46 @@ Page({
    */
   data: {
     userDetail: {},
-    isPwdShow: false,
-    show: "password",
+    pwdStatus: false,
     telephone: "",
     email: ""
   },
 
-  showHidePwd: function(e) {
+  showHidePwd: function() {
     var _this = this;
-    if (_this.data.isPwdShow) {
+    if (_this.data.pwdStatus) {
       _this.setData({
-        isPwdShow: false,
-        show: "password"
+        pwdStatus: false
       });
-    }else{
+    } else {
       _this.setData({
-        isPwdShow: true,
-        show: "text"
+        pwdStatus: true
       });
     }
   },
-  
-  inputTel: function(e){
+
+  inputTel: function(e) {
     var _this = this;
     _this.setData({
       telephone: e.detail.value
     });
   },
 
-  inputEmail: function(e){
+  inputEmail: function(e) {
     var _this = this;
     _this.setData({
       email: e.detail.value
     });
   },
 
-  clearTel: function(){
+  clearTel: function() {
     var _this = this;
     _this.setData({
       telephone: ""
     });
   },
 
-  clearEmail: function(){
+  clearEmail: function() {
     var _this = this;
     _this.setData({
       email: ""
@@ -62,11 +59,15 @@ Page({
     var _this = this;
     _this.setData({
       userDetail: JSON.parse(options.data),
-      telephone: JSON.parse(options.data).telephone,
-      email: JSON.parse(options.data).email
     });
     console.log("编辑页面获取到的data:");
     console.log(_this.data);
+    if (_this.data.userDetail.telephone && _this.data.userDetail.email) {
+      _this.setData({
+        telephone: _this.data.userDetail.telephone,
+        email: _this.data.userDetail.email
+      });
+    }
   },
 
   /**
@@ -81,10 +82,12 @@ Page({
    */
   onShow: function() {
     var _this = this;
-    _this.setData({
-      telephone: _this.data.userDetail.telephone,
-      email: _this.data.userDetail.email
-    });
+    if (_this.data.userDetail.telephone && _this.data.userDetail.email) {
+      _this.setData({
+        telephone: _this.data.userDetail.telephone,
+        email: _this.data.userDetail.email
+      });
+    }
   },
 
   /**

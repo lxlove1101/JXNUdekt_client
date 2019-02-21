@@ -46,8 +46,8 @@
       <view class="weui-cells__title">密码</view>
       <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
-          <input class="weui-input" type="{{show}}" value="{{userDetail.password}}" />
-          <image class='after-btn' src="{{isPwdShow?'/images/my/browse.png':'/images/my/browse_fill.png'}}" bindtap='showHidePwd'></image>
+          <input class="weui-input" password='{{pwdStatus}}' value="{{userDetail.password}}" />
+          <image class='after-btn' src="{{pwdStatus?'/images/my/browse.png':'/images/my/browse_fill.png'}}" bindtap='showHidePwd'></image>
         </view>
       </view>
     </view>
