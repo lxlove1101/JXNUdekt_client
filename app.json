@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/tab/search/search",
     "pages/tab/my/my",
     "pages/login/login",
     "pages/tab/index/index",
-    "pages/tab/search/search",
     "pages/tab/activity/activity",
     "pages/logs/logs",
     "pages/core/kb/kb",
@@ -21,7 +21,10 @@
     "pages/core/cet/cet",
     "pages/core/cet/result",
     "pages/core/fw/fw",
-    "pages/tab/my/editInfo/editInfo"
+    "pages/tab/my/editInfo/editInfo",
+    "pages/tab/my/message/message",
+    "pages/tab/my/setting/setting",
+    "pages/tab/my/contact_us/contact_us"
   ],
   "window": {
     "backgroundTextStyle": "light",

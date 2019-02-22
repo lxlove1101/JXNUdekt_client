@@ -1,2 +1,17 @@
 <!--pages/search/search.wxml-->
-<text>pages/search/search.wxml</text>
+<view class='container'>
+  <!-- viewPager -->
+  <view class="swiper-tab">
+    <view style="padding-left:5px;" class="tab-list-left {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">活动</view>
+    <view class="tab-list-right {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">用户 </view>
+  </view>
+  <!-- swiperContainer -->
+  <swiper current="{{currentTab}}" bindchange="bindChange" class="swiper-container">
+    <swiper-item>
+
+    </swiper-item>
+    <swiper-item>
+    
+    </swiper-item>
+  </swiper>
+</view>

@@ -6,7 +6,12 @@ Page({
   data: {
     userDetail: {},
     headImg: '../../../images/my/headImg.jpg',
-    menu: [{
+    menu: [
+      {
+        tag: 'message',
+        name: '我的消息'
+      },
+      {
         tag: 'setting',
         name: '设置'
       },
