@@ -7,11 +7,95 @@
   </view>
   <!-- swiperContainer -->
   <swiper current="{{currentTab}}" bindchange="bindChange" class="swiper-container">
+    <!-- queryByActivity -->
+    <swiper-item style="height:100%">
+      <scroll-view scroll-x="false" scroll-y="true" style="height:100%; margin-top: 28rpx">
+        <view class='activityContainer'>
+          <block>
+            <view class="repair-detail">
+              <!-- 一级类picker -->
+              <view class="repair-detail-item">
+                <view class="repair-detail-item-hd">
+                  <text class="repair-detail-name">活动一级类</text>
+                  <view class="repair-detail-item-ft">
+                    <picker class="repair-detail-picker" bindchange="listenerActivityType1" value="{{activityType1Value}}" range="{{activityType1Range}}" range-key='name'>
+                      <view class="repair-detail-content">
+                        <text wx:if="{{activityType1Value === false}}" class="repair-detail-info">请选择一级类型</text>
+                        <text wx:else class="repair-detail-info">{{activityType1Range[activityType1Value].name}}</text>
+                        <image class="more-icon" src="/images/menu/enter.png"></image>
+                      </view>
+                    </picker>
+                  </view>
+                </view>
+              </view>
+              <!-- 二级类picker -->
+              <view class="repair-detail-item">
+                <view class="repair-detail-item-hd">
+                  <text class="repair-detail-name">活动二级类</text>
+                  <view class="repair-detail-item-ft">
+                    <picker class="repair-detail-picker" bindchange="listenerActivityType2" value="{{activityType2Value}}" range="{{activityType2Range}}" range-key='name' disabled="{{!activityType1Value}}">
+                      <view class="repair-detail-content">
+                        <text wx:if="{{!activityType1Value}}" class="repair-detail-info disabled">请先选择活动一级类</text>
+                        <text wx:elif="{{activityType2Value === false}}" class="repair-detail-info">请选择二级类型</text>
+                        <text wx:else class="repair-detail-info">{{activityType2Range[activityType2Value].name}}</text>
+                        <image class="more-icon" src="/images/menu/enter.png"></image>
+                      </view>
+                    </picker>
+                  </view>
+                </view>
+              </view>
+              <!-- 三级类picker -->
+              <view class="repair-detail-item">
+                <view class="repair-detail-item-hd">
+                  <text class="repair-detail-name">活动三级类</text>
+                  <view class="repair-detail-item-ft">
+                    <picker class="repair-detail-picker" bindchange="listenerActivityType3" value="{{activityType3Value}}" range="{{activityType3Range}}" range-key='name' disabled="{{!activityType2Value}}">
+                      <view class="repair-detail-content">
+                        <text wx:if="{{!activityType2Value}}" class="repair-detail-info disabled">请先选择活动二级类</text>
+                        <text wx:elif="{{activityType3Value === false}}" class="repair-detail-info">请选择三级类型</text>
+                        <text wx:else class="repair-detail-info">{{activityType3Range[activityType3Value].name}}</text>
+                        <image class="more-icon" src="/images/menu/enter.png"></image>
+                      </view>
+                    </picker>
+                  </view>
+                </view>
+              </view>
+              <!-- 活动所属学院picker -->
+              <view class="repair-detail-item">
+                <view class="repair-detail-item-hd">
+                  <text class="repair-detail-name">所属学院</text>
+                  <view class="repair-detail-item-ft">
+                    <picker class="repair-detail-picker" bindchange="listenerActivityCollege" value="{{activityCollegeValue}}" range="{{activityCollegeRange}}">
+                      <view class="repair-detail-content">
+                        <text wx:if="{{activityCollegeValue === false}}" class="repair-detail-info">请选择活动所属学院</text>
+                        <text wx:else class="repair-detail-info">{{activityCollegeRange[activityCollegeValue]}}</text>
+                        <image class="more-icon" src="/images/menu/enter.png"></image>
+                      </view>
+                    </picker>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <!-- 活动标题input -->
+            <view class="declare-context">
+              <text class="declare-context-title">活动标题</text>
+              <view class="declare-context-panel">
+                <view class="declare-context-input">
+                  <input placeholder="请输入活动标题关键字" bindinput="listenerTitle" />
+                </view>
+              </view>
+            </view>
+            <!-- submit -->
+            <view class="submit-declare" bindtap="submitApply">
+              <text>查询</text>
+            </view>
+          </block>
+        </view>
+      </scroll-view>
+    </swiper-item>
+    <!-- queryByUsers -->
     <swiper-item>
 
-    </swiper-item>
-    <swiper-item>
-    
     </swiper-item>
   </swiper>
 </view>
