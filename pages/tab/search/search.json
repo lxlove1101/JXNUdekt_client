@@ -1,5 +1,6 @@
 {
   "usingComponents": {},
   "navigationBarTitleText": "搜索",
-  "enablePullDownRefresh": false
+  "enablePullDownRefresh": false,
+  "disableScroll": true
 }

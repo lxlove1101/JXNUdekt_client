@@ -65,10 +65,10 @@
                 <view class="repair-detail-item-hd">
                   <text class="repair-detail-name">所属学院</text>
                   <view class="repair-detail-item-ft">
-                    <picker class="repair-detail-picker" bindchange="listenerActivityCollege" value="{{activityCollegeValue}}" range="{{activityCollegeRange}}">
+                    <picker class="repair-detail-picker" bindchange="listenerActivityCollege" value="{{activityCollegeValue}}" range="{{activityCollegeRange}}" range-key='collegeName'>
                       <view class="repair-detail-content">
                         <text wx:if="{{activityCollegeValue === false}}" class="repair-detail-info">请选择活动所属学院</text>
-                        <text wx:else class="repair-detail-info">{{activityCollegeRange[activityCollegeValue]}}</text>
+                        <text wx:else class="repair-detail-info">{{activityCollegeRange[activityCollegeValue].collegeName}}</text>
                         <image class="more-icon" src="/images/menu/enter.png"></image>
                       </view>
                     </picker>
@@ -84,6 +84,9 @@
                   <input placeholder="请输入活动标题关键字" bindinput="listenerTitle" />
                 </view>
               </view>
+            </view>
+            <view class="declare-context">
+              <text class="declare-context-title" style='color: #f00'>*以上条件至少选择一个填写，可选择一个或多个条件进行搜索查询</text>
             </view>
             <!-- submit -->
             <view class="submit-declare" bindtap="submitApply">
