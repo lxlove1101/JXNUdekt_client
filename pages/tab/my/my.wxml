@@ -10,10 +10,10 @@
   <view class="menu-list" wx:for="{{menu}}" wx:key="*this">
     <navigator url="{{'./' + item.tag + '/' + item.tag}}" class="issue-link">
       <view class="menu-btn">
-        <image class="btn-icon" src="/images/menu/{{item.tag}}.png"></image>
+        <image class="btn-icon" src="/images/my/{{item.tag}}.png"></image>
         <text class="btn-text">{{item.name}}</text>
         <view class="btn-open">
-          <image class="btn-enter" src="/images/menu/enter.png"></image>
+          <image class="btn-enter" src="/images/my/enter.png"></image>
         </view>
       </view>
     </navigator>

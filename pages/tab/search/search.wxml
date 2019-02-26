@@ -88,6 +88,10 @@
             <view class="declare-context">
               <text class="declare-context-title" style='color: #f00'>*以上条件至少选择一个填写，可选择一个或多个条件进行搜索查询</text>
             </view>
+            <view class="query-help" bindtap="showHelp">
+              <text>帮助</text>
+              <image class="query-help-img" src="/images/login/help.png"></image>
+            </view>
             <!-- submit -->
             <view class="submit-declare" bindtap="submitApply">
               <text>查询</text>
@@ -97,8 +101,35 @@
       </scroll-view>
     </swiper-item>
     <!-- queryByUsers -->
-    <swiper-item>
-
+    <swiper-item style="height:100%">
+      <view class='userContainer'>
+      <block>
+        <view class="header">
+          <image class="xs-logo" src="/images/search/xs.png"></image>
+          <view class="header-more">
+            <view class="login-help" bindtap="showHelp">
+              <text>帮助</text>
+              <image class="login-help-img" src="/images/login/help.png"></image>
+            </view>
+          </view>
+          <!--搜索框-->
+          <view class="search-input">
+            <view class="search-icon-box">
+              <image class="search-icon" src="/images/search/search-sign.png"></image>
+            </view>
+            <form class="input-form" bindreset="bindClearSearchTap" bindsubmit="bindConfirmSearchTap">
+              <input class="input-text" value="{{userSearchInput}}" bindinput="bindSearchInput" type="text" name="search" placeholder="姓名 / 学号" bindconfirm="bindConfirmSearchTap" />
+              <button class="input-clear-button" formType="reset" hover-class="none" wx:if="{{userSearchInput}}">
+                <image class="clear-icon" src="/images/search/clear.png"></image>
+              </button>
+              <button class="input-confirm-button" formType="submit" hover-class="none">
+                <text>搜索</text>
+              </button>
+            </form>
+          </view>
+        </view>
+        </block>
+      </view>
     </swiper-item>
   </swiper>
 </view>

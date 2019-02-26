@@ -225,6 +225,20 @@
   background: rgba(231, 138, 176, 0.06);
 }
 
+.query-help {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 30rpx;
+  font-size: 10pt;
+  color: #bbb;
+}
+.query-help-img {
+  width: 11pt;
+  height: 11pt;
+  margin: 0 5rpx;
+}
+
 .submit-declare {
   display: flex;
   align-items: center;
@@ -240,4 +254,274 @@
 
 .submit-declare:active {
   opacity: 0.8;
+}
+
+/* queryByUser */
+.userContainer{
+    align-items: center;
+}
+.userContainer .xs-logo {
+    width: 180rpx;
+    height: 180rpx;
+    opacity: .9;
+    margin: 100rpx 0 30rpx;
+}
+.userContainer .search-input{
+    position: relative;
+    display: flex;
+    width: 92%;
+    margin: 0 4%;
+    height: 75rpx;
+    box-shadow: 5rpx 5rpx 15rpx #e2e2e2;
+    transition: all .15s ease-in-out;
+}
+.userContainer .search-input:focus{
+    box-shadow: 5rpx 5rpx 20rpx #d2d2d2;
+}
+.userContainer .search-icon-box{
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 20rpx;
+    width: 38rpx;
+    height: 38rpx;
+    margin-top: -16rpx;
+}
+.userContainer .input-form{
+    position: relative;
+    background: #fff;
+    flex: 1;
+    display: flex;
+    height: 100%;
+    padding-right: 110rpx;
+}
+.userContainer .input-text{
+    position: absolute;
+    left: 0;
+    right: 0;
+    flex: 1;
+    display: flex;
+    height: 100%;
+    padding: 0 160rpx 0 70rpx;
+    font-size: 11pt;
+    line-height: 150%;
+}
+.input-placeholder {
+    color: #ccc;
+    font-size: 11pt;
+    line-height: 150%;
+}
+button{
+    font-size: 11pt;
+    background: transparent;
+    line-height: 150%;
+    border-radius: 0;
+    padding: 0;
+    border: none;
+}
+button::after{
+    display: none;
+}
+.userContainer .input-clear-button{
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    right: 115rpx;
+    padding: 15rpx;
+    margin-top: -30rpx;
+}
+.userContainer .input-clear-button:active{
+    opacity: .8;
+}
+.userContainer .clear-icon{
+    width: 30rpx;
+    height: 30rpx;
+}
+.userContainer .input-confirm-button{
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    height: 75rpx;
+    width: 110rpx;
+    background: #9f8bea;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+}
+.userContainer .input-confirm-button:active{
+    opacity: .8;
+}
+
+/* ==========================================================================
+   header
+ ============================================================================ */
+.header {
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.active .header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-height: 85rpx;
+    background-color: #fff;
+}
+.active .xs-logo{
+    display: none;
+}
+/* search-input
+ ============================================================================ */
+.active .search-input {
+
+    position: absolute;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 85rpx;
+}
+    .active .search-icon-box{
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 20rpx;
+        height: 85rpx;
+    }
+    .active .input-form {
+        flex: 1;
+        display: flex;
+        position: relative;
+        height: 85rpx;
+    }
+    .active .input-text {
+        
+        flex: 1;
+        position: absolute;
+        left: 0;
+        right: 0;
+        font-size: 11pt;
+        line-height: 150%;
+        box-sizing: border-box;
+        width: 100%;
+        height: 85rpx;
+        padding: 0 180rpx 0 70rpx;
+    }
+    .active .input-clear-button{
+        position: absolute;
+        top: 0;
+        right: 105rpx;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 20rpx;
+        height: 85rpx;
+        opacity: .95;
+    }
+    .active .input-clear-button .clear-icon{
+        width: 30rpx;
+        height: 30rpx;
+    }
+    .active .input-confirm-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 20rpx 0 10rpx;
+        height: 85rpx;
+        opacity: .95;
+    }
+    .active .input-confirm-button text{
+        font-size: 10pt;
+        background: #9f8bea;
+        color: #fff;
+        border-radius: 3px; 
+        padding: 3rpx 15rpx;
+    }
+    .active .input-confirm-button:active{
+        opacity: .8;
+    }
+/* search-state
+ ============================================================================ */
+.search-state {
+
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}   
+    .search-icon {
+
+        width: 30rpx;
+        height: 30rpx;
+    }
+    .state-text {
+        
+        margin-left: 20rpx;
+        color: #b1b1b1;
+        text-align: center;
+    }
+
+.container.active .header-more {
+    display: none;
+}
+.header-more {
+    display: flex;
+    flex-direction: column;
+    width: 92%;
+    margin: 0 4%;
+    padding-bottom: 20rpx;
+}
+.login-help {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 10pt;
+  color: #bbb;
+  opacity: .8;
+}
+.login-help-img {
+  width: 11pt;
+  height: 11pt;
+  margin: 0 5rpx;
+}
+
+.help {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.help-q {
+  color: #999;
+  font-size: 11pt;
+  line-height: 200%;
+  margin-top: 5rpx;
+}
+.help-a {
+  text-indent: 1em;
+  line-height: 160%;
+  display: flex;
+  flex-direction: column;
+}
+.help-a text{
+  word-break: break-all;
 }

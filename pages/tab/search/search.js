@@ -5,7 +5,6 @@ Page({
    */
   data: {
     currentTab: 0, //当前选中的tab
-    showError: false,
 
     activityType1Value: false, //活动类型1picker-value
     activityType1Range: [], //活动类型1picker-range
@@ -17,6 +16,15 @@ Page({
     activityCollegeValue: false, //活动所属学院picker-value
     activityCollegeRange: [], //活动所属学院picker-value
 
+    formData: {
+      'type1id': "", //活动一级类Id
+      'type2id': "", //活动二级类Id
+      'type3id': "", //活动三级类Id
+      'collegeId': "", //学院Id
+      'name': "" //活动标题关键字
+    },
+
+    userSearchInput: ""
   },
 
   onLoad: function(options) {
@@ -46,6 +54,10 @@ Page({
       });
     }
   },
+
+  /**
+   * 活动搜索脚本
+   */
   // 发起请求获取活动类型信息
   getActivityTypeRequest: function() {
     var _this = this;
@@ -83,7 +95,7 @@ Page({
     });
   },
   //发起请求获取学院基本信息
-  getCollegeRequest: function(){
+  getCollegeRequest: function() {
     var _this = this;
     wx.request({
       url: getApp().data.url + 'QUERY_COLLEGE_BY_ALL',
@@ -125,7 +137,8 @@ Page({
     this.setData({
       activityType1Value: index,
       activityType2Value: false,
-      activityType2Range: activityType2Range
+      activityType2Range: activityType2Range,
+      'formData.type1id': this.data.activityType1Range[index].id
     });
   },
   listenerActivityType2: function(e) {
@@ -138,7 +151,8 @@ Page({
     this.setData({
       activityType2Value: index,
       activityType3Value: false,
-      activityType3Range: activityType3Range
+      activityType3Range: activityType3Range,
+      'formData.type2id': this.data.activityType2Range[index].id
     });
   },
   listenerActivityType3: function(e) {
@@ -149,16 +163,88 @@ Page({
     var index = e.detail.value;
     this.setData({
       activityType3Value: index,
+      'formData.type3id': this.data.activityType3Range[index].id
     });
   },
   listenerActivityCollege: function(e) {
     var index = e.detail.value;
     this.setData({
       activityCollegeValue: index,
+      'formData.collegeId': this.data.activityCollegeRange[index].id
     });
   },
   listenerTitle: function(e) {
+    this.setData({
+      'formData.name': e.detail.value
+    });
+  },
 
+  submitApply: function() {
+    var _this = this;
+    var emptyCount = 0;
+    for (var key in _this.data.formData) {
+      if (_this.data.formData[key] == "") {
+        emptyCount++;
+      }
+    }
+    if (emptyCount == 5) {
+      wx.showToast({
+        title: '请至少选择一个条件输入',
+        duration: 1000,
+        mask: true,
+        icon: 'none'
+      });
+    } else {
+      wx.request({
+        url: getApp().data.url + 'QUERY_ACTIVITY_BY_CONDITION',
+        method: 'POST',
+        data: _this.data.formData,
+        header: {
+          "Content-Type": "application/json"
+        },
+        success: res => {
+          console.log(res);
+          wx.navigateTo({
+            url: './searchResult/searchResult?data=' + JSON.stringify(res.data),
+          });
+        },
+        fail: err => {
+          console.log(err);
+          wx.showToast({
+            title: '服务器访问失败',
+            duration: 1000,
+            mask: true,
+            icon: 'none'
+          });
+        },
+        complete: data => {
+          console.log(getApp().data.url + 'QUERY_ACTIVITY_BY_CONDITION');
+          console.log(data);
+        }
+      });
+    }
+  },
+
+  showHelp: function() {
+
+  },
+
+  /**
+   * 用户搜索脚本
+   */
+  bindClearSearchTap: function(e){
+    this.setData({
+      userSearchInput: ""
+    });
+  },
+  bindSearchInput: function(e){
+    this.setData({
+      userSearchInput: e.detail.value
+    });
+  },
+  bindConfirmSearchTap: function(e){
+    console.log("提交搜索用户表单");
+    console.log(e.detail.value);
   },
 
 })
