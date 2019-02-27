@@ -24,7 +24,10 @@ Page({
       'name': "" //活动标题关键字
     },
 
-    userSearchInput: ""
+    userSearchInput: "",
+
+    activityHelpStatus: false,
+    userHelpStatus: false
   },
 
   onLoad: function(options) {
@@ -224,9 +227,20 @@ Page({
       });
     }
   },
-
-  showHelp: function() {
-
+  showActivityHelp: function () {
+    this.setData({
+      activityHelpStatus: true
+    });
+  },
+  hideActivityHelp: function () {
+    this.setData({
+      activityHelpStatus: false
+    });
+  },
+  tapActivityHelp: function (e) {
+    if (e.target.id == 'activityHelp') {
+      this.hideActivityHelp();
+    }
   },
 
   /**
@@ -246,5 +260,22 @@ Page({
     console.log("提交搜索用户表单");
     console.log(e.detail.value);
   },
+  // activityHelpStatus: false,
+  // userHelpStatus: false
+  showUserHelp: function(){
+    this.setData({
+      userHelpStatus: true
+    });
+  },
+  hideUserHelp: function(){
+    this.setData({
+      userHelpStatus: false
+    });
+  },
+  tapUserHelp: function(e){
+    if (e.target.id == 'userHelp') {
+      this.hideUserHelp();
+    }
+  }
 
 })

@@ -22,7 +22,7 @@
                       <view class="repair-detail-content">
                         <text wx:if="{{activityType1Value === false}}" class="repair-detail-info">请选择一级类型</text>
                         <text wx:else class="repair-detail-info">{{activityType1Range[activityType1Value].name}}</text>
-                        <image class="more-icon" src="/images/menu/enter.png"></image>
+                        <image class="more-icon" src="/images/my/enter.png"></image>
                       </view>
                     </picker>
                   </view>
@@ -38,7 +38,7 @@
                         <text wx:if="{{!activityType1Value}}" class="repair-detail-info disabled">请先选择活动一级类</text>
                         <text wx:elif="{{activityType2Value === false}}" class="repair-detail-info">请选择二级类型</text>
                         <text wx:else class="repair-detail-info">{{activityType2Range[activityType2Value].name}}</text>
-                        <image class="more-icon" src="/images/menu/enter.png"></image>
+                        <image class="more-icon" src="/images/my/enter.png"></image>
                       </view>
                     </picker>
                   </view>
@@ -54,7 +54,7 @@
                         <text wx:if="{{!activityType2Value}}" class="repair-detail-info disabled">请先选择活动二级类</text>
                         <text wx:elif="{{activityType3Value === false}}" class="repair-detail-info">请选择三级类型</text>
                         <text wx:else class="repair-detail-info">{{activityType3Range[activityType3Value].name}}</text>
-                        <image class="more-icon" src="/images/menu/enter.png"></image>
+                        <image class="more-icon" src="/images/my/enter.png"></image>
                       </view>
                     </picker>
                   </view>
@@ -69,7 +69,7 @@
                       <view class="repair-detail-content">
                         <text wx:if="{{activityCollegeValue === false}}" class="repair-detail-info">请选择活动所属学院</text>
                         <text wx:else class="repair-detail-info">{{activityCollegeRange[activityCollegeValue].collegeName}}</text>
-                        <image class="more-icon" src="/images/menu/enter.png"></image>
+                        <image class="more-icon" src="/images/my/enter.png"></image>
                       </view>
                     </picker>
                   </view>
@@ -88,7 +88,7 @@
             <view class="declare-context">
               <text class="declare-context-title" style='color: #f00'>*以上条件至少选择一个填写，可选择一个或多个条件进行搜索查询</text>
             </view>
-            <view class="query-help" bindtap="showHelp">
+            <view class="query-help" bindtap="showActivityHelp">
               <text>帮助</text>
               <image class="query-help-img" src="/images/login/help.png"></image>
             </view>
@@ -97,38 +97,76 @@
               <text>查询</text>
             </view>
           </block>
+          <!-- 帮助窗口 -->
+          <view class="help" id="activityHelp" wx:if="{{activityHelpStatus}}" bindtap="tapActivityHelp">
+            <view class="box">
+              <view class="box-hd">
+                <text class="box-title">帮助</text>
+                <image class="box-close" src="/images/login/close.png" bindtap="hideActivityHelp"></image>
+              </view>
+              <view class="box-bd">
+                <view class="help-q">1、根据姓名、学号、班级、专业等查询</view>
+                <view class="help-a">
+                  <text>您可以通过输入姓名、学号、班级、专业等学生信息的完整关键词进行精确搜索，也可以输入学生信息的前一部分进行模糊搜索。例如搜索 “闵” ，将会搜索到所有姓‘闵’的同学。</text>
+                </view>
+                <view class="help-q">2、根据课程教学班查询</view>
+                <view class="help-a">
+                  <text>您可以通过输入 ‘教学班:’+教学班号 进行精确搜索。如搜索 “教学班:SK161572” ，将会搜索到SK161572教学班的学生名单。</text>
+                </view>
+              </view>
+            </view>
+          </view>
         </view>
       </scroll-view>
     </swiper-item>
     <!-- queryByUsers -->
     <swiper-item style="height:100%">
       <view class='userContainer'>
-      <block>
-        <view class="header">
-          <image class="xs-logo" src="/images/search/xs.png"></image>
-          <view class="header-more">
-            <view class="login-help" bindtap="showHelp">
-              <text>帮助</text>
-              <image class="login-help-img" src="/images/login/help.png"></image>
+        <block>
+          <view class="header">
+            <image class="xs-logo" src="/images/search/xs.png"></image>
+            <view class="header-more">
+              <view class="login-help" bindtap="showUserHelp">
+                <text>帮助</text>
+                <image class="login-help-img" src="/images/login/help.png"></image>
+              </view>
+            </view>
+            <!--搜索框-->
+            <view class="search-input">
+              <view class="search-icon-box">
+                <image class="search-icon" src="/images/search/search-sign.png"></image>
+              </view>
+              <form class="input-form" bindreset="bindClearSearchTap" bindsubmit="bindConfirmSearchTap">
+                <input class="input-text" value="{{userSearchInput}}" bindinput="bindSearchInput" type="text" name="search" placeholder="姓名 / 学号" bindconfirm="bindConfirmSearchTap" />
+                <button class="input-clear-button" formType="reset" hover-class="none" wx:if="{{userSearchInput}}">
+                  <image class="clear-icon" src="/images/search/clear.png"></image>
+                </button>
+                <button class="input-confirm-button" formType="submit" hover-class="none">
+                  <text>搜索</text>
+                </button>
+              </form>
             </view>
           </view>
-          <!--搜索框-->
-          <view class="search-input">
-            <view class="search-icon-box">
-              <image class="search-icon" src="/images/search/search-sign.png"></image>
+        </block>
+        <!-- 帮助窗口 -->
+        <view class="help" id="userHelp" wx:if="{{userHelpStatus}}" bindtap="tapUserHelp">
+          <view class="box">
+            <view class="box-hd">
+              <text class="box-title">帮助</text>
+              <image class="box-close" src="/images/login/close.png" bindtap="hideUserHelp"></image>
             </view>
-            <form class="input-form" bindreset="bindClearSearchTap" bindsubmit="bindConfirmSearchTap">
-              <input class="input-text" value="{{userSearchInput}}" bindinput="bindSearchInput" type="text" name="search" placeholder="姓名 / 学号" bindconfirm="bindConfirmSearchTap" />
-              <button class="input-clear-button" formType="reset" hover-class="none" wx:if="{{userSearchInput}}">
-                <image class="clear-icon" src="/images/search/clear.png"></image>
-              </button>
-              <button class="input-confirm-button" formType="submit" hover-class="none">
-                <text>搜索</text>
-              </button>
-            </form>
+            <view class="box-bd">
+              <view class="help-q">1、根据姓名、学号、班级、专业等查询</view>
+              <view class="help-a">
+                <text>您可以通过输入姓名、学号、班级、专业等学生信息的完整关键词进行精确搜索，也可以输入学生信息的前一部分进行模糊搜索。例如搜索 “闵” ，将会搜索到所有姓‘闵’的同学。</text>
+              </view>
+              <view class="help-q">2、根据课程教学班查询</view>
+              <view class="help-a">
+                <text>您可以通过输入 ‘教学班:’+教学班号 进行精确搜索。如搜索 “教学班:SK161572” ，将会搜索到SK161572教学班的学生名单。</text>
+              </view>
+            </view>
           </view>
         </view>
-        </block>
       </view>
     </swiper-item>
   </swiper>
