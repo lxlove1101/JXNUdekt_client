@@ -208,7 +208,7 @@ Page({
         success: res => {
           console.log(res);
           wx.navigateTo({
-            url: './searchResult/searchResult?data=' + JSON.stringify(res.data),
+            url: './searchResult/searchResult?data=' + JSON.stringify(res.data) + '&type=activitySearch',
           });
         },
         fail: err => {
@@ -257,11 +257,41 @@ Page({
     });
   },
   bindConfirmSearchTap: function(e){
-    console.log("提交搜索用户表单");
-    console.log(e.detail.value);
+    var _this = this;
+    var param = e.detail.value.search;
+    if (param == null || param == "") {
+      wx.showToast({
+        title: '请输入学号或姓名进行搜索',
+        duration: 1000,
+        mask: true,
+        icon: 'none'
+      });
+    } else {
+      wx.request({
+        url: getApp().data.url + 'QUERY_USER_DETAIL/' + param,
+        method: 'GET',
+        success: res => {
+          console.log(res);
+          wx.navigateTo({
+            url: './searchResult/searchResult?data=' + JSON.stringify(res.data) + '&type=userSearch',
+          });
+        },
+        fail: err => {
+          console.log(err);
+          wx.showToast({
+            title: '服务器访问失败',
+            duration: 1000,
+            mask: true,
+            icon: 'none'
+          });
+        },
+        complete: data => {
+          console.log(getApp().data.url + 'QUERY_USER_DETAIL/' + param);
+          console.log(data);
+        }
+      });
+    }
   },
-  // activityHelpStatus: false,
-  // userHelpStatus: false
   showUserHelp: function(){
     this.setData({
       userHelpStatus: true

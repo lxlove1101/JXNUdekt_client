@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    routeType: "",
+    routeData: null
   },
 
   /**
@@ -13,7 +14,11 @@ Page({
    */
   onLoad: function (options) {
     var obj = JSON.parse(options.data);
-    console.log(obj);
+    this.setData({
+      routeType: options.type,
+      routeData: obj
+    });
+    console.log(this.data);
   },
 
   /**
