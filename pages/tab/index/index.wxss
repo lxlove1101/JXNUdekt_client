@@ -1,22 +1,27 @@
 /**index.wxss**/
-page{
+
+page {
   background-color: #ececec83;
 }
-.swiper-item{
+
+.swiper-item {
   display: block;
   height: 150px;
-  width:100%;
+  width: 100%;
 }
-.container{
+
+.container {
   height: 100%;
   background-color: white;
   padding-bottom: 0;
   background-repeat: no-repeat;
-  background-size: 100% auto; 
+  background-size: 100% auto;
   background-position: bottom center;
 }
+
 /**功能导航**/
-.main-core{
+
+.main-core {
   display: flex;
   flex-flow: row wrap;
   align-content: flex-start;
@@ -26,7 +31,8 @@ page{
   min-height: 350rpx;
   overflow: hidden;
 }
-.main-core-item{
+
+.main-core-item {
   display: flex;
   flex-flow: column wrap;
   justify-content: center;
@@ -35,24 +41,36 @@ page{
   width: 20%;
   height: 170rpx;
 }
-.main-core-item.disabled{
+
+.main-core-item.disabled {
   color: #9c9c9c;
 }
-.core-item-icon{
+
+.core-item-icon {
   display: block;
   width: 85rpx;
   height: 85rpx;
   margin: 15rpx auto;
+  border-radius: 25rpx;
 }
-.core-item-name{
+
+.core-item-icon image {
+  margin: 16rpx;
+  width: 54rpx;
+  height: 54rpx;
+}
+
+.core-item-name {
   display: block;
   margin: 5rpx;
 }
-.main-swpier{
-  height:390rpx;
-  margin-bottom:20rpx;
+
+.main-swpier {
+  height: 390rpx;
+  margin-bottom: 20rpx;
 }
-.main-swpier .wx-swiper-dots.wx-swiper-dots-horizontal{
+
+.main-swpier .wx-swiper-dots.wx-swiper-dots-horizontal {
   bottom: 0;
   margin-bottom: -5rpx;
 }

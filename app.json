@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/tab/index/index",
     "pages/tab/activity/activity",
     "pages/tab/activity/declaration/declaration",
     "pages/tab/search/search",
@@ -9,7 +10,6 @@
     "pages/tab/my/message/message",
     "pages/tab/my/setting/setting",
     "pages/tab/my/contact_us/contact_us",
-    "pages/tab/index/index",
     "pages/login/login",
     "pages/logs/logs"
   ],

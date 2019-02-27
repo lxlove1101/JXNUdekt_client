@@ -5,7 +5,6 @@
     <block wx:for="{{imgUrls}}" wx:key="*this">
       <swiper-item>
         <image src="{{item}}" class="swiper-item" width="355" height="150" />
-        <!-- <view class="swiper-item {{item}}"></view> -->
       </swiper-item>
     </block>
   </swiper>
@@ -15,8 +14,10 @@
   <swiper-item class="main-core" wx:for="{{cores}}"  wx:for-item="core" wx:key="id" > -->
   <view class='main-core'>
     <block wx:for="{{cores[0]}}" wx:key="id">
-      <navigator class="main-core-item" url="{{'/pages/core/'+item.id+'/'+item.id}}">
-        <image class="core-item-icon" src="/images/core/{{item.id}}.png"></image>
+      <navigator class="main-core-item" url="{{item.path}}">
+        <view class="core-item-icon" style="background-color: {{item.color}}">
+          <image class='icon' src="{{item.img}}"></image>
+        </view>
         <text class="core-item-name">{{item.name}}</text>
       </navigator>
     </block>
@@ -24,13 +25,14 @@
   <!-- </swiper-item >
   </swiper> -->
 
-  <view wx:if="{{remind}}" class="remind-box">
+
+
+  <!-- loadingAnimation -->
+  <!-- <view wx:if="{{remind}}" class="remind-box">
     <image wx:if="{{remind == '加载中'}}" class="remind-img" src="/images/index/loading.gif"></image>
     <block wx:else>
       <image class="remind-img" src="/images/index/nothing.png"></image>
-      <text class="remind-text">{{remind}}</text>
-      <navigator wx:if="{{remind == '未绑定'}}" url="/pages/more/login" class="remind-btn">前往绑定</navigator>
     </block>
-  </view>
+  </view> -->
 
 </view>
