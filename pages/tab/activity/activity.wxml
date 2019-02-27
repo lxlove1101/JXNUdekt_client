@@ -1,13 +1,11 @@
-<!--pages/activity/activity.wxml-->
+<!-- pages/activity/activity.wxml -->
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view class="grids">
+  <block wx:for="{{categories}}" wx:key="*this" >
+    <navigator class="item" style="background-color: {{item.color}}" url="{{'/pages/tab/activity/'+item.tag+'/'+item.tag}}">
+      <image src="{{item.img}}"/>
+      <text>{{item.name}}</text>
+    </navigator>
+  </block>
   </view>
 </view>
