@@ -8,7 +8,15 @@ Page({
     currentTab: 0,
     //分类下对应的内容
     contentArr: [],
+    //请求的数据体
+    reqBody: {
+      name: "",
+      type1id: 0,
+      page: 1,
+      pageSize: 20
+    },
 
+    hasMore: true,
     commitData: [2, 3
 
     ],
@@ -16,10 +24,11 @@ Page({
 
   },
 
-  onShow(){
-    this.getActivityType1Request(isSuc => {
-      if(isSuc){
-        this.getActivityDetailRequest();
+  onShow() {
+    var _this = this;
+    _this.getActivityType1Request(isSuc => {
+      if (isSuc) {
+        _this.getActivityDetailRequest("", _this.data.typeArr[_this.data.currentTab].id);
       }
     });
   },
@@ -80,17 +89,17 @@ Page({
   /**
    * request
    */
-  getActivityType1Request: function(callback){
+  getActivityType1Request: function(callback) {
     var _this = this;
     wx.request({
       url: getApp().data.url + 'QUERY_ACTIVITY_TYPE1_BY_ALL',
       method: 'GET',
       success: res => {
-        if(res.data.code == 'SUCCESS'){
+        if (res.data.code == 'SUCCESS') {
           _this.setData({
             typeArr: res.data.data.content
           });
-        }else{
+        } else {
           wx.showToast({
             title: '获取信息失败',
             duration: 1000,
@@ -98,7 +107,7 @@ Page({
             icon: 'none'
           });
         }
-        if(typeof callback === 'function'){
+        if (typeof callback === 'function') {
           callback(true);
         }
       },
@@ -117,10 +126,44 @@ Page({
       }
     })
   },
-  getActivityDetailRequest: function(){
+  getActivityDetailRequest: function(name, type1id) {
     var _this = this;
-    var typeId = _this.data.typeArr[_this.data.currentTab].id;
-    console.log("选择的tabID：" + typeId);
-  }, 
+    _this.setData({
+      "reqBody.name": name,
+      "reqBody.type1id": type1id
+    });
+    wx.request({
+      url: getApp().data.url + 'QUERY_ACTIVITY_DETAIL_BY_TYPEID',
+      method: 'POST',
+      data: _this.data.reqBody,
+      success: res => {
+        if (res.data.code == 'SUCCESS') {
+          _this.setData({
+            contentArr: res.data.data.content
+          });
+        } else {
+          wx.showToast({
+            title: '获取信息失败',
+            duration: 1000,
+            mask: true,
+            icon: 'none'
+          });
+        }
+      },
+      fail: err => {
+        console.log(err);
+        wx.showToast({
+          title: '获取信息失败',
+          duration: 1000,
+          mask: true,
+          icon: 'none'
+        });
+      },
+      complete: data => {
+        console.log(getApp().data.url + 'QUERY_ACTIVITY_DETAIL_BY_TYPEID');
+        console.log(data);
+      }
+    })
+  },
 
 })

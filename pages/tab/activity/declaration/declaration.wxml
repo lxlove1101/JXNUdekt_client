@@ -14,6 +14,8 @@
     <swiper-item>
     </swiper-item>
   </swiper> -->
+  <view wx:if="{{hasMore}}" class='loadmore loading'>正在加载</view>
+  <view wx:else class='loadmore'>没有更多了</view>
 
 </view>
 
