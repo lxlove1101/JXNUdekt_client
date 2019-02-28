@@ -14,7 +14,7 @@
   <swiper-item class="main-core" wx:for="{{cores}}"  wx:for-item="core" wx:key="id" > -->
   <view class='main-core'>
     <block wx:for="{{cores[0]}}" wx:key="id">
-      <navigator class="main-core-item" url="{{item.path}}">
+      <navigator class="main-core-item" url="{{item.path}}" open-type="{{item.openType}}">
         <view class="core-item-icon" style="background-color: {{item.color}}">
           <image class='icon' src="{{item.img}}"></image>
         </view>

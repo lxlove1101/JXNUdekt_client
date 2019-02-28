@@ -18,16 +18,16 @@ Page({
     //导航栏信息
     cores: [
       [
-        { path: '/pages/tab/activity/declaration/declaration', name: '申报活动', img: "/images/index/icon1.png", color: "#f38181"},
-        { path: 'cj', name: '活动搜索', img: "/images/index/icon2.png", color: "#fce38a"},
-        { path: 'ks', name: '申报记录', img: "/images/index/icon3.png", color: "#e8d3ff"},
-        { path: 'kjs', name: '待定', img: "/images/index/icon4.png", color: "#95e1d3"},
-        { path: 'xs', name: '学院活动', img: "/images/index/icon5.png", color: "#a8d8ea"},
-        { path: 'ykt', name: '班级排行', img: "/images/index/icon6.png", color: "#aa96da"},
-        { path: 'jy', name: '待定', img: "/images/index/icon7.png", color: "#fcbad3"},
-        { path: 'xf', name: '待定', img: "/images/index/icon8.png", color: "#ffd3b5"},
-        { path: 'sdf', name: '资讯信息', img: "/images/index/icon9.png", color: "#dcedc2"},
-        { path: 'bx', name: '意见反馈', img: "/images/index/icon10.png", color: "#ffaaa6"}
+        { path: '/pages/tab/activity/declaration/declaration', openType: "navigate", name: '申报活动', img: "/images/index/icon1.png", color: "#f38181"},
+        { path: '/pages/tab/search/search', openType: "switchTab", name: '活动搜索', img: "/images/index/icon2.png", color: "#fce38a"},
+        { path: 'ks', openType: "navigate", name: '申报记录', img: "/images/index/icon3.png", color: "#e8d3ff"},
+        { path: 'kjs', openType: "navigate", name: '待定', img: "/images/index/icon4.png", color: "#95e1d3"},
+        { path: 'xs', openType: "navigate", name: '学院活动', img: "/images/index/icon5.png", color: "#a8d8ea"},
+        { path: 'ykt', openType: "navigate", name: '班级排行', img: "/images/index/icon6.png", color: "#aa96da"},
+        { path: 'jy', openType: "navigate", name: '待定', img: "/images/index/icon7.png", color: "#fcbad3"},
+        { path: 'xf', openType: "navigate", name: '待定', img: "/images/index/icon8.png", color: "#ffd3b5"},
+        { path: 'sdf', openType: "navigate", name: '资讯信息', img: "/images/index/icon9.png", color: "#dcedc2"},
+        { path: 'bx', openType: "navigate", name: '意见反馈', img: "/images/index/icon10.png", color: "#ffaaa6"}
       ], [
         { path: 'cet', name: '测试', img: "", color: ""},
         { path: 'fw', name: "测试", img: "", color: ""}

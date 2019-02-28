@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/tab/activity/declaration/declaration",
+    "pages/login/login",
     "pages/tab/index/index",
     "pages/tab/activity/activity",
-    "pages/tab/activity/declaration/declaration",
     "pages/tab/search/search",
     "pages/tab/search/searchResult/searchResult",
     "pages/tab/my/my",
@@ -10,7 +11,6 @@
     "pages/tab/my/message/message",
     "pages/tab/my/setting/setting",
     "pages/tab/my/contact_us/contact_us",
-    "pages/login/login",
     "pages/logs/logs"
   ],
   "window": {

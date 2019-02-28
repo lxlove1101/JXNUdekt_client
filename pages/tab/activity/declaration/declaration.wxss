@@ -1,19 +1,85 @@
-.container {
-  height: 100%;
+/* 选择栏 */
+
+.swiper-tab {
+  width: 100%;
+  text-align: center;
+  line-height:80rpx;
+}
+
+.swiper-tab-list {
+  display: inline-block;
+  font-size: 30rpx;
+  color: #777;
+  width: 24%;
+}
+.on {
+  color: #962F30;
+  border-bottom: 5rpx solid #962F30;
+}
+
+.tab{
+	display: flex;
+	flex-direction: column;
+}
+.tab-nav{
+	height: 80rpx;
+	background: #fff;
+	border-bottom: 0.5rpx dotted #ddd;
+	display: flex;
+	line-height: 79rpx;
+	position: relative;
+}
+ 
+.tab-line{
+	position: absolute;
+	left: 0;
+	bottom: -1rpx;
+	height: 4rpx;
+	background: #f7982a;
+	transition: all 0.3s;
+}
+.tab-content{
+	flex: 1;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+
+
+/* 底部我的选择栏 */
+
+.my-bar {
+  position: fixed;
+  bottom: 0rpx;
+  width: 100%;
+  height: 100rpx;
+  background: -webkit-linear-gradient(top, #f9f9f9, #f3f3f3);
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
   justify-content: space-between;
-  padding: 200rpx 0;
-  box-sizing: border-box;
-}
-
-.textStyle {
-  display: flex;
-  flex-direction: column;
   align-items: center;
 }
 
-.textContainer {
-  margin-top: 200px;
+.my-bar-image-container {
+  width: 75rpx;
+  height: 75rpx;
+  padding-left: 30rpx;
+}
+
+.my-bar-image {
+  width: 75rpx;
+  height: 75rpx;
+  border-radius: 10rpx;
+}
+
+.my-bar-text {
+  flex-grow: 1;
+  padding-left: 20rpx;
+  font-size: 34rpx;
+}
+
+.my-bar-button {
+  width: 40rpx;
+  height: 40rpx;
+  padding-right: 30rpx;
 }
