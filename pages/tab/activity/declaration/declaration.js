@@ -7,6 +7,7 @@ Page({
     //当前选择的tab
     currentTab: 0,
 
+
     commitData: [2, 3
 
     ],
@@ -107,6 +108,9 @@ Page({
         console.log(data);
       }
     })
-  }
+  },
+  getActivityDetailRequest: function(){
+
+  }, 
 
 })

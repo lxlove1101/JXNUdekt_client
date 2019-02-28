@@ -10,7 +10,7 @@
   display: inline-block;
   font-size: 30rpx;
   color: #777;
-  width: 24%;
+  width: 22%;
 }
 .on {
   color: #962F30;
