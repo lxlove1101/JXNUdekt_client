@@ -6,7 +6,8 @@ Page({
     typeArr: [],
     //当前选择的tab
     currentTab: 0,
-
+    //分类下对应的内容
+    contentArr: [],
 
     commitData: [2, 3
 
@@ -16,7 +17,11 @@ Page({
   },
 
   onShow(){
-    this.getActivityType1Request();
+    this.getActivityType1Request(isSuc => {
+      if(isSuc){
+        this.getActivityDetailRequest();
+      }
+    });
   },
 
   /**
@@ -75,7 +80,7 @@ Page({
   /**
    * request
    */
-  getActivityType1Request: function(){
+  getActivityType1Request: function(callback){
     var _this = this;
     wx.request({
       url: getApp().data.url + 'QUERY_ACTIVITY_TYPE1_BY_ALL',
@@ -92,6 +97,9 @@ Page({
             mask: true,
             icon: 'none'
           });
+        }
+        if(typeof callback === 'function'){
+          callback(true);
         }
       },
       fail: err => {
@@ -110,7 +118,9 @@ Page({
     })
   },
   getActivityDetailRequest: function(){
-
+    var _this = this;
+    var typeId = _this.data.typeArr[_this.data.currentTab].id;
+    console.log("选择的tabID：" + typeId);
   }, 
 
 })
