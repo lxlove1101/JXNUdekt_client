@@ -11,7 +11,8 @@
     "pages/tab/my/message/message",
     "pages/tab/my/setting/setting",
     "pages/tab/my/contact_us/contact_us",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/tab/activity/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

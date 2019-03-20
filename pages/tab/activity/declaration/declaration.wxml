@@ -1,22 +1,35 @@
 <include src="/includes/search-bar.wxml" />
 <scroll-view scroll-x="true" style="width: 100%;white-space:nowrap;">
-    <view class="swiper-tab">
-      <block wx:for="{{typeArr}}" wx:key="id">
-        <view class="swiper-tab-list {{currentTab==index ? 'on' : ''}}" data-current="{{index}}" bindtap="swichNav">{{item.name}}</view>
-      </block>
-    </view>
-  </scroll-view>
+  <view class="swiper-tab">
+    <block wx:for="{{typeArr}}" wx:key="id">
+      <view class="swiper-tab-list {{currentTab==index ? 'on' : ''}}" data-current="{{index}}" bindtap="swichNav">{{item.name}}</view>
+    </block>
+  </view>
+</scroll-view>
 <view class='container'>
-  <text>11111111</text>
   <!-- <swiper current="{{currentTab}}" bindchange="bindChange" style="height:100%;">
     <swiper-item>
     </swiper-item>
     <swiper-item>
     </swiper-item>
   </swiper> -->
+  <view class="cells">
+    <navigator class="item" hover-class='background-color: #fff;' wx:for="{{contentArr}}" wx:key="id" url="../detail/detail?item={{item.id}}">
+      <image src="{{item.images[0]}}" mode="aspectFill" class='headimg' />
+      <view class="meta">
+        <text class="name">{{item.name}}</text>
+        <text class="phone">所属学院：{{item.collegeName || "未知"}}</text>
+        <text class="address">分值：{{item.score}}</text>
+        <text class="hours">创建时间：{{item.createTime}}</text>
+      </view>
+      <image wx:if="{{!item.isPicked}}" src='/images/activity/add.png' class='addsub' catchtap='addActivity' data-item="{{item}}"/>
+      <image wx:else src='/images/activity/sub.png' class='addsub' catchtap='subActivity' data-item="{{item}}"/>
+      <!-- <view class="score">{{item.score || 'none'}}</view> -->
+    </navigator>
+  </view>
+
   <view wx:if="{{hasMore}}" class='loadmore loading'>正在加载</view>
   <view wx:else class='loadmore'>没有更多了</view>
-
 </view>
 
 <view class="my-bar" bindtap='submitSelected'>

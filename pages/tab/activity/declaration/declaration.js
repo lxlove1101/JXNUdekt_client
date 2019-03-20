@@ -8,6 +8,7 @@ Page({
     currentTab: 0,
     //分类下对应的内容
     contentArr: [],
+
     //请求的数据体
     reqBody: {
       name: "",
@@ -17,9 +18,7 @@ Page({
     },
 
     hasMore: true,
-    commitData: [2, 3
-
-    ],
+    commitData: [2, 3],
 
 
   },
@@ -31,6 +30,15 @@ Page({
         _this.getActivityDetailRequest("", _this.data.typeArr[_this.data.currentTab].id);
       }
     });
+  },
+
+  onPullDownRefresh(){
+    console.log("触发下拉事件");
+    wx.stopPullDownRefresh();
+  },
+
+  onReachBottom(){
+    console.log("触发上拉事件");
   },
 
   /**
@@ -71,7 +79,8 @@ Page({
     } else {
       this.setData({
         currentTab: e.target.dataset.current
-      })
+      });
+      console.log(this.data.currentTab);
     }
   },
   bindChange: function(e) {
@@ -79,6 +88,19 @@ Page({
       currentTab: e.detail.current
     });
   },
+
+  /**
+   * 添加活动/删除活动
+   */
+  addActivity: function(e){
+    console.log("添加活动");
+    console.log(e);
+  },
+  subActivity: function (e) {
+    console.log("删除活动");
+    console.log(e);
+  },
+
   /**
    * 提交栏事件
    */
@@ -139,7 +161,8 @@ Page({
       success: res => {
         if (res.data.code == 'SUCCESS') {
           _this.setData({
-            contentArr: res.data.data.content
+            contentArr: res.data.data.content.list,
+            hasMore: res.data.data.content.hasNextPage
           });
         } else {
           wx.showToast({
