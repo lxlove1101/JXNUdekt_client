@@ -25,6 +25,9 @@ Page({
 
   onShow() {
     var _this = this;
+    wx.showLoading({
+      title: '加载中...',
+    })
     _this.getActivityType1Request(isSuc => {
       if (isSuc) {
         _this.getActivityDetailRequest("", _this.data.typeArr[_this.data.currentTab].id);
@@ -77,10 +80,14 @@ Page({
     if (this.data.currentTab === e.target.dataset.current) {
       return false;
     } else {
+      console.log(this.data.currentTab);
+      wx.showLoading({
+        title: '加载中...',
+      })
       this.setData({
         currentTab: e.target.dataset.current
       });
-      console.log(this.data.currentTab);
+      this.getActivityDetailRequest("", this.data.typeArr[this.data.currentTab].id);
     }
   },
   bindChange: function(e) {
@@ -185,6 +192,7 @@ Page({
       complete: data => {
         console.log(getApp().data.url + 'QUERY_ACTIVITY_DETAIL_BY_TYPEID');
         console.log(data);
+        wx.hideLoading();
       }
     })
   },
