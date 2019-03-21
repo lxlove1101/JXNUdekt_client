@@ -22,8 +22,8 @@
         <text class="address">分值：{{item.score}}</text>
         <text class="hours">创建时间：{{item.createTime}}</text>
       </view>
-      <image wx:if="{{!item.isPicked}}" src='/images/activity/add.png' class='addsub' catchtap='addActivity' data-item="{{item}}"/>
-      <image wx:else src='/images/activity/sub.png' class='addsub' catchtap='subActivity' data-item="{{item}}"/>
+      <image wx:if="{{!item.isPicked}}" src='/images/activity/add.png' class='addsub' catchtap='addActivity' data-item="{{item}}" data-index="{{index}}"/>
+      <image wx:else src='/images/activity/sub.png' class='addsub' catchtap='subActivity' data-item="{{item}}" data-index="{{index}}"/>
       <!-- <view class="score">{{item.score || 'none'}}</view> -->
     </navigator>
   </view>

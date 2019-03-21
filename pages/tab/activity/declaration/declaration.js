@@ -19,9 +19,9 @@ Page({
     },
 
     hasMore: true,
-    commitData: [2, 3],
 
-
+    commitData: [],
+    commitIds: [],
   },
 
   onShow() {
@@ -36,12 +36,12 @@ Page({
     });
   },
 
-  onPullDownRefresh(){
+  onPullDownRefresh() {
     console.log("触发下拉事件");
     wx.stopPullDownRefresh();
   },
 
-  onReachBottom(){
+  onReachBottom() {
     console.log("触发上拉事件");
   },
 
@@ -77,7 +77,7 @@ Page({
   /**
    * 选择栏事件
    */
-  swichNav: function(e) {
+  swichNav: function (e) {
     if (this.data.currentTab === e.target.dataset.current) {
       return false;
     } else {
@@ -91,7 +91,7 @@ Page({
       this.getActivityDetailRequest("", this.data.typeArr[this.data.currentTab].id);
     }
   },
-  bindChange: function(e) {
+  bindChange: function (e) {
     this.setData({
       currentTab: e.detail.current
     });
@@ -100,26 +100,70 @@ Page({
   /**
    * 添加活动/删除活动
    */
-  addActivity: function(e){
-    console.log("添加活动");
-    console.log(e);
+  addActivity: function (e) {
+    //设置key: isPicked
+    let newArray = this.data.contentArr;
+    let index = e.currentTarget.dataset.index;
+    let content = e.currentTarget.dataset.item;
+    content.isPicked = true;
+    newArray[index] = content;
+    this.setData({
+      contentArr: newArray
+    });
+    //添加选择的数据到数组里
+    let data = this.data.commitData;
+    let ids = this.data.commitIds;
+    data.push(content);
+    ids.push(content.id);
+    this.setData({
+      commitData: data,
+      commitIds: ids
+    });
+    console.log(this.data.commitData);
+    console.log(this.data.commitIds);
   },
   subActivity: function (e) {
-    console.log("删除活动");
-    console.log(e);
+    //设置key: isPicked
+    let newArray = this.data.contentArr;
+    let index = e.currentTarget.dataset.index;
+    let content = e.currentTarget.dataset.item;
+    content.isPicked = false;
+    newArray[index] = content;
+    this.setData({
+      contentArr: newArray
+    });
+    //从已选择的数组中删除元素
+    let data = this.data.commitData;
+    let ids = this.data.commitIds;
+    let temp = 0;
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].id == content.id) {
+        temp = i;
+      }
+    }
+    data.splice(temp, 1);
+    if (ids.indexOf(content.id) != -1) {
+      ids.splice(ids.indexOf(content.id), 1);
+    }
+    this.setData({
+      commitData: data,
+      commitIds: ids
+    });
+    console.log(this.data.commitData);
+    console.log(this.data.commitIds);
   },
 
   /**
    * 提交栏事件
    */
-  submitSelected: function() {
+  submitSelected: function () {
     console.log("点击提交了活动");
   },
 
   /**
    * request
    */
-  getActivityType1Request: function(callback) {
+  getActivityType1Request: function (callback) {
     var _this = this;
     wx.request({
       url: getApp().data.url + 'QUERY_ACTIVITY_TYPE1_BY_ALL',
@@ -156,7 +200,7 @@ Page({
       }
     })
   },
-  getActivityDetailRequest: function(name, type1id) {
+  getActivityDetailRequest: function (name, type1id) {
     var _this = this;
     _this.setData({
       "reqBody.name": name,
@@ -198,9 +242,13 @@ Page({
     })
   },
 
-  setPickerKey: function(list){
+  setPickerKey: function (list) {
     list.forEach(element => {
-      element["isPicker"] = false;
+      if (this.data.commitIds.indexOf(element.id) != -1) {
+        element["isPicked"] = true;
+      } else {
+        element["isPicked"] = false;
+      }
     });
     this.setData({
       contentArr: list
