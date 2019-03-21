@@ -6,6 +6,7 @@ Page({
     typeArr: [],
     //当前选择的tab
     currentTab: 0,
+
     //分类下对应的内容
     contentArr: [],
 
@@ -167,8 +168,8 @@ Page({
       data: _this.data.reqBody,
       success: res => {
         if (res.data.code == 'SUCCESS') {
+          _this.setPickerKey(res.data.data.content.list);
           _this.setData({
-            contentArr: res.data.data.content.list,
             hasMore: res.data.data.content.hasNextPage
           });
         } else {
@@ -195,6 +196,16 @@ Page({
         wx.hideLoading();
       }
     })
+  },
+
+  setPickerKey: function(list){
+    list.forEach(element => {
+      element["isPicker"] = false;
+    });
+    this.setData({
+      contentArr: list
+    });
+    console.log(list);
   },
 
 })
