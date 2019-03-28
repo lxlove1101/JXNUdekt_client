@@ -1,7 +1,7 @@
 //app.js
 App({
   data: {
-    url: 'http://localhost/API/',
+    url: 'http://192.168.1.104/API/',
     userInfo: {}
   },
   onLaunch: function() {

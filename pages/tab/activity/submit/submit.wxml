@@ -1,0 +1,21 @@
+<!--pages/tab/activity/submit/submit.wxml-->
+<view class='container'>
+  <text>person information</text>
+
+  <view class="cells">
+    <navigator class="item" hover-class='background-color: #fff;' wx:for="{{commitData}}" wx:key="id" url="../detail/detail?item={{item.id}}">
+      <image src="{{item.images[0]}}" mode="aspectFill" class='headimg' />
+      <view class="meta">
+        <text class="name">{{item.name}}</text>
+        <text class="phone">所属学院：{{item.collegeName || "未知"}}</text>
+        <text class="address">分值：{{item.score}}</text>
+        <text class="hours">创建时间：{{item.createTime}}</text>
+      </view>
+      <image wx:if="{{!item.isPicked}}" src='/images/activity/add.png' class='addsub' catchtap='addActivity' data-item="{{item}}" data-index="{{index}}" />
+      <image wx:else src='/images/activity/sub.png' class='addsub' catchtap='subActivity' data-item="{{item}}" data-index="{{index}}" />
+    </navigator>
+    <view wx:if="{{commitData.length == 0}}" class='contentEmpty'>你还未选择活动</view>
+
+  </view>
+  
+</view>

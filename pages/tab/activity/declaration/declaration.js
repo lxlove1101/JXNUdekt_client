@@ -158,6 +158,10 @@ Page({
    */
   submitSelected: function () {
     console.log("点击提交了活动");
+    wx.navigateTo({
+      url: '../submit/submit?commitData='+JSON.stringify(this.data.commitData)+
+           '&commitIds='+JSON.stringify(this.data.commitIds)
+    });
   },
 
   /**

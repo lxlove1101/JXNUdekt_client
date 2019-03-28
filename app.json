@@ -1,12 +1,13 @@
 {
   "pages": [
+    "pages/tab/my/my",
     "pages/tab/activity/declaration/declaration",
+    "pages/tab/activity/submit/submit",
     "pages/login/login",
     "pages/tab/index/index",
     "pages/tab/activity/activity",
     "pages/tab/search/search",
     "pages/tab/search/searchResult/searchResult",
-    "pages/tab/my/my",
     "pages/tab/my/editInfo/editInfo",
     "pages/tab/my/message/message",
     "pages/tab/my/setting/setting",
