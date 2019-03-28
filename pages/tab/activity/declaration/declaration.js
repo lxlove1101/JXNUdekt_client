@@ -24,11 +24,29 @@ Page({
     commitIds: [],
   },
 
+  initData: function () {
+    this.setData({
+      typeArr: [],
+      currentTab: 0,
+      contentArr: [],
+      reqBody: {
+        name: "",
+        type1id: 0,
+        page: 1,
+        pageSize: 20
+      },
+      hasMore: true,
+      commitData: [],
+      commitIds: [],
+    });
+  },
+
   onShow() {
     var _this = this;
     wx.showLoading({
       title: '加载中...',
-    })
+    });
+    _this.initData();
     _this.getActivityType1Request(isSuc => {
       if (isSuc) {
         _this.getActivityDetailRequest("", _this.data.typeArr[_this.data.currentTab].id);
@@ -159,8 +177,8 @@ Page({
   submitSelected: function () {
     console.log("点击提交了活动");
     wx.navigateTo({
-      url: '../submit/submit?commitData='+JSON.stringify(this.data.commitData)+
-           '&commitIds='+JSON.stringify(this.data.commitIds)
+      url: '../submit/submit?commitData=' + JSON.stringify(this.data.commitData) +
+        '&commitIds=' + JSON.stringify(this.data.commitIds)
     });
   },
 

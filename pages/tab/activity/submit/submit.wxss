@@ -59,9 +59,60 @@
   margin-right: 20rpx;
 }
 
-.contentEmpty{
+.contentEmpty {
   color: #888;
   font-size: 30rpx;
   line-height: 100rpx;
   text-align: center;
+}
+
+/* 头部提示信息 */
+
+.result {
+  margin-left: 50rpx;
+  margin-right: 50rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  padding-bottom: 20rpx;
+  background: rgb(219, 130, 132);
+  border-radius: 30rpx;
+}
+
+.result .baseinf {
+  margin-top: 20rpx;
+  margin-left: 30rpx;
+}
+
+.result .examName {
+  font-size: 32rpx;
+  margin-bottom: 20rpx;
+}
+
+.result .text {
+  color: #ffffff;
+  font-size: 26rpx;
+}
+
+.resultTitle {
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+  font-size: 16pt;
+  font-weight: bold;
+  color: #222;
+}
+
+.my-bar {
+  position: fixed;
+  bottom: 0rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.submitButton {
+  border-radius: 40rpx;
+  width: 50%;
 }

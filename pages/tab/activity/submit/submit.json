@@ -1,4 +1,5 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "确认提交"
+  "navigationBarTitleText": "确认提交",
+  "enablePullDownRefresh": false
 }

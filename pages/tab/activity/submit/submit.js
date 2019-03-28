@@ -65,4 +65,55 @@ Page({
     }
   },
 
+  submitActivity: function(){
+    console.log("点击了提交活动按钮");
+    const _this  = this;
+    wx.showModal({
+      title: "提示",
+      content: "确定要提交吗?",
+      success(res) {
+        if (res.confirm) {
+          _this.submitActivityRequest();
+        }
+      }
+    })
+  },
+
+  submitActivityRequest: function(){
+    console.log("tttttttttttt");
+    const _this = this;
+    wx.showLoading({
+      title: "正在提交，请稍候..."
+    });
+    wx.request({
+      url: getApp().data.url + '/COMMIT_ACTIVITY',
+      method: "POST",
+      data: {
+        "userId": _this.data.userDetail.userId,
+        "activityIds": _this.data.commitIds
+      },
+      success: res => {
+        wx.showToast({
+          title:"成功",
+          icon: "success",
+          mask: true,
+          success: res => {
+            wx.hideLoading();
+            setTimeout(()=>{
+              wx.navigateBack({
+                delta: 1
+              })
+            },1500);
+          }
+        });
+      },
+      fail: err => {
+        
+      },
+      complete: data => {
+        
+      }
+    });
+  }
+
 })
