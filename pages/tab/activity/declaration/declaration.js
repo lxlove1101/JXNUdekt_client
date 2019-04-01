@@ -6,6 +6,8 @@ Page({
     typeArr: [],
     //当前选择的tab
     currentTab: 0,
+    //回到顶端按钮显示
+    goToTopShow: false,
 
     //分类下对应的内容
     contentArr: [],
@@ -19,6 +21,7 @@ Page({
     },
 
     hasMore: true,
+    viewPager: true,
 
     commitData: [],
     commitIds: [],
@@ -66,31 +69,52 @@ Page({
   /**
    * 搜索框相关事件
    */
+  //点击搜索按钮时触发
   searchHandle() {
     this.setData({
-      //设置data，搜索结果，设置ui
+      viewPager: false
     });
+    this.getActivityDetailRequest(this.data.searchText, "");
   },
+  //显示隐藏搜索框
   showSearchHandle() {
     this.setData({
-      searchShowed: true
+      searchShowed: true,
+      viewPager: false,
+      contentArr: []
     });
   },
   hideSearchHandle() {
     this.setData({
       searchText: '',
-      searchShowed: false
+      searchShowed: false,
+      viewPager: true
+    });
+    this.getActivityType1Request(isSuc => {
+      if (isSuc) {
+        this.getActivityDetailRequest("", this.data.typeArr[this.data.currentTab].id);
+      }
     });
   },
+  //清除输入内容
   clearSearchHandle() {
     this.setData({
       searchText: ''
     });
   },
+  //键盘输入触发
   searchChangeHandle(e) {
     this.setData({
       searchText: e.detail.value
     });
+  },
+  //丢失焦点触发
+  loseFocusHandle() {
+
+  },
+  //获得焦点触发
+  getFocusHandle() {
+
   },
   /**
    * 选择栏事件
@@ -113,6 +137,33 @@ Page({
     this.setData({
       currentTab: e.detail.current
     });
+  },
+  /**
+   * 回到顶部事件
+   */
+  goTop: function () {
+    wx.pageScrollTo({
+      scrollTop: 0,
+      duration: 300
+    });
+  },
+  onPageScroll: function (e) {
+    if (e.scrollTop > 200) {
+      if (this.data.goToTopShow) {
+        return;
+      }
+      this.setData({
+        goToTopShow: true
+      });
+
+    } else {
+      if (!this.data.goToTopShow) {
+        return;
+      }
+      this.setData({
+        goToTopShow: false
+      });
+    }
   },
 
   /**

@@ -1,8 +1,9 @@
 /* 选择栏 */
+
 .swiper-tab {
   width: 100%;
   text-align: center;
-  line-height:80rpx;
+  line-height: 80rpx;
 }
 
 .swiper-tab-list {
@@ -11,38 +12,43 @@
   color: #777;
   width: 22%;
 }
+
 .on {
   color: #962F30;
   border-bottom: 5rpx solid #962F30;
 }
 
-.tab{
-	display: flex;
-	flex-direction: column;
+.tab {
+  display: flex;
+  flex-direction: column;
 }
-.tab-nav{
-	height: 80rpx;
-	background: #fff;
-	border-bottom: 0.5rpx dotted #ddd;
-	display: flex;
-	line-height: 79rpx;
-	position: relative;
+
+.tab-nav {
+  height: 80rpx;
+  background: #fff;
+  border-bottom: 0.5rpx dotted #ddd;
+  display: flex;
+  line-height: 79rpx;
+  position: relative;
 }
- 
-.tab-line{
-	position: absolute;
-	left: 0;
-	bottom: -1rpx;
-	height: 4rpx;
-	background: #f7982a;
-	transition: all 0.3s;
+
+.tab-line {
+  position: absolute;
+  left: 0;
+  bottom: -1rpx;
+  height: 4rpx;
+  background: #f7982a;
+  transition: all 0.3s;
 }
-.tab-content{
-	flex: 1;
-	overflow-y: auto;
-	overflow-x: hidden;
+
+.tab-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
+
 /* 单个子项 */
+
 .cells {
   background-color: #fff;
 }
@@ -72,8 +78,7 @@
   font-size: 28rpx;
 }
 
-.cells .item .meta .phone,
-.cells .item .meta .address {
+.cells .item .meta .phone, .cells .item .meta .address {
   color: #678;
   font-size: 24rpx;
 }
@@ -94,7 +99,7 @@
   text-align: center;
 }
 
-.addsub{
+.addsub {
   width: 80rpx;
   height: 80rpx;
   margin-top: 60rpx;
@@ -102,6 +107,7 @@
 }
 
 /* 底部加载更多 */
+
 .loadmore {
   color: #888;
   font-size: 30rpx;
@@ -167,4 +173,30 @@
   width: 40rpx;
   height: 40rpx;
   padding-right: 30rpx;
+}
+
+/* 回到顶部按钮 */
+
+.com-widget-goTop {
+  position: fixed;
+  bottom: 125px;
+  right: 5px;
+  background: rgba(0, 0, 0, 0.48);
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 500;
+}
+
+.com-widget-goTop .icon-gotop {
+  background-color: rgba(0, 0, 0, 0.8);
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  line-height: 68px;
+  font-size: 12px;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 50%;
+  background: url(http://m.dev.vd.cn/static/xcx/v1/goo/w_2-3451cc437e.png) no-repeat center -1110px;
+  -webkit-background-size: 50px auto;
 }

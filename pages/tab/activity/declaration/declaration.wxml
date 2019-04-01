@@ -1,8 +1,10 @@
 <include src="/includes/search-bar.wxml" />
-<scroll-view scroll-x="true" style="width: 100%;white-space:nowrap;">
+<scroll-view scroll-x="true" style="width: 100%;white-space:nowrap;" wx:if="{{viewPager}}">
   <view class="swiper-tab">
     <block wx:for="{{typeArr}}" wx:key="id">
-      <view class="swiper-tab-list {{currentTab==index ? 'on' : ''}}" data-current="{{index}}" bindtap="swichNav">{{item.name}}</view>
+      <view class="swiper-tab-list {{currentTab==index ? 'on' : ''}}" data-current="{{index}}" bindtap="swichNav">
+        {{item.name}}
+      </view>
     </block>
   </view>
 </scroll-view>
@@ -22,16 +24,17 @@
         <text class="address">分值：{{item.score}}</text>
         <text class="hours">创建时间：{{item.createTime}}</text>
       </view>
-      <image wx:if="{{!item.isPicked}}" src='/images/activity/add.png' class='addsub' catchtap='addActivity' data-item="{{item}}" data-index="{{index}}"/>
-      <image wx:else src='/images/activity/sub.png' class='addsub' catchtap='subActivity' data-item="{{item}}" data-index="{{index}}"/>
+      <image wx:if="{{!item.isPicked}}" src='/images/activity/add.png' class='addsub' catchtap='addActivity' data-item="{{item}}" data-index="{{index}}" />
+      <image wx:else src='/images/activity/sub.png' class='addsub' catchtap='subActivity' data-item="{{item}}" data-index="{{index}}" />
       <!-- <view class="score">{{item.score || 'none'}}</view> -->
     </navigator>
   </view>
-
   <view wx:if="{{hasMore}}" class='loadmore loading'>正在加载</view>
   <view wx:else class='loadmore'>没有更多了</view>
 </view>
-
+<view class="com-widget-goTop" bindtap="goTop" wx:if="{{goToTopShow}}">
+  <view class="icon-gotop">顶部</view>
+</view>
 <view class="my-bar" bindtap='submitSelected'>
   <view class="my-bar-image-container">
     <image class="my-bar-image" src="/images/my/headImg.jpg"></image>
