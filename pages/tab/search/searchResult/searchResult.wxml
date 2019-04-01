@@ -1,2 +1,29 @@
-<!--pages/tab/search/searchResult/searchResult.wxml-->
-<text>pages/tab/search/searchResult/searchResult.wxml</text>
+<!-- pages/tab/search/searchResult/searchResult.wxml -->
+<view class="container">
+    <view wx:if="{{routeType == 'activitySearch'}}">
+        <view class="grids">
+            <block wx:for="{{routeData.data.content.list}}" wx:key="*this">
+                <navigator class="item" url="/pages/tab/activity/detail/detail?activityId={{item.id}}">
+                    <text>{{item.name}}</text>
+                </navigator>
+            </block>
+        </view>
+    </view>
+    <view wx:elif="{{routeType == 'userSearch'}}">
+            <block wx:for="{{routeData.data.content.list}}" wx:key="*this">
+                <navigator url="/pages/tab/my/detail/detail?id={{item.id}}">
+                    <view class="user-info-box">
+                        <view class="user-info">
+                            <view class="info-hd">
+                                <image class="user-avatar" src="{{item.headImg}}"></image>
+                                <view class="user-title">
+                                    <text class="user-name">{{item.username}}</text>
+                                    <text class="user-id">{{item.userId}}</text>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </navigator>
+            </block>
+    </view>
+</view>

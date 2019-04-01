@@ -137,7 +137,7 @@
                 <image class="search-icon" src="/images/search/search-sign.png"></image>
               </view>
               <form class="input-form" bindreset="bindClearSearchTap" bindsubmit="bindConfirmSearchTap">
-                <input class="input-text" value="{{userSearchInput}}" bindinput="bindSearchInput" type="text" name="search" placeholder="姓名 / 学号" bindconfirm="bindConfirmSearchTap" />
+                <input class="input-text" value="{{userSearchInput}}" bindinput="bindSearchInput" type="text" name="search" placeholder="姓名 / 学号"/>
                 <button class="input-clear-button" formType="reset" hover-class="none" wx:if="{{userSearchInput}}">
                   <image class="clear-icon" src="/images/search/clear.png"></image>
                 </button>

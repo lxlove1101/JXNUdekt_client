@@ -1,0 +1,53 @@
+/* pages/tab/my/detail/detail.wxss */
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 168rpx;
+  height: 168rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+  font-size: 26px;
+}
+
+.result .score {
+  margin-top: 50rpx;
+  background: #F2F2F2;
+  padding: 25rpx;
+}
+
+.result .score {
+  color: #999;
+  background: #fff;
+}
+
+.result .score .total {
+  font-size: 33rpx;
+  color: #333;
+}
+
+.result .score .scoreList {
+  margin-top: 20rpx;
+}
+
+.result .list {
+  overflow: hidden;
+  padding: 15rpx;
+  border-top: 1px solid #eee;
+}
+
+.result .list .left {
+  float: left;
+}
+
+.result .list .right {
+  float: right;
+}

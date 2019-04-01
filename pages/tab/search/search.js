@@ -24,7 +24,12 @@ Page({
       'name': "" //活动标题关键字
     },
 
-    userSearchInput: "",
+    userSearchData: {
+      'userId': "",
+      'username': "",
+      'page': 1,
+      'pageSize': 20
+    },
 
     activityHelpStatus: false,
     userHelpStatus: false
@@ -198,6 +203,10 @@ Page({
         icon: 'none'
       });
     } else {
+      this.setData({
+        'formData.page': 1,
+        'formData.pageSize': 20
+      });
       wx.request({
         url: getApp().data.url + 'QUERY_ACTIVITY_BY_CONDITION',
         method: 'POST',
@@ -267,9 +276,26 @@ Page({
         icon: 'none'
       });
     } else {
+      if(isNaN(param)){
+        this.setData({
+          'userSearchData.username': param,
+          'userSearchData.userId': "",
+          'userSearchData.page': 1,
+          'userSearchData.pageSize': 20
+        });
+      }else{
+        this.setData({
+          'userSearchData.username': "",
+          'userSearchData.userId': param,
+          'userSearchData.page': 1,
+          'userSearchData.pageSize': 20
+        });
+      }
+      
       wx.request({
-        url: getApp().data.url + 'QUERY_USER_DETAIL/' + param,
-        method: 'GET',
+        url: getApp().data.url + 'QUERY_USER_DETAIL',
+        method: 'POST',
+        data: this.data.userSearchData,
         success: res => {
           console.log(res);
           wx.navigateTo({
