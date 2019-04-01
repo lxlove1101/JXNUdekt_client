@@ -1,2 +1,41 @@
-<!--pages/tab/activity/detail/detail.wxml-->
-<text>pages/tab/activity/detail/detail.wxml</text>
+<view class="container">
+    <block>
+        <view class="result">
+            <view class="resultTitle">活动详情</view>
+            <view class="baseinf">
+                <view class="text">{{'活动名称：' + activityDetail.name}}</view>
+                <view class="text">{{'创建时间：' + activityDetail.createTime}}</view>
+                <view class="text">{{'修改时间：' + activityDetail.modifyTime}}</view>
+            </view>
+            <view class="score">
+                <view class="total">所属信息</view>
+                <view class="scoreList">
+                    <view class="listen list">
+                        <view class="left">所属学院</view>
+                        <view class="right">{{activityDetail.collegeName}}</view>
+                    </view>
+                    <view class="read list">
+                        <view class="left">一级类别</view>
+                        <view class="right">{{activityDetail.type1name}}</view>
+                    </view>
+                    <view class="write list">
+                        <view class="left">二级类别</view>
+                        <view class="right">{{activityDetail.type2name}}</view>
+                    </view>
+                    <view class="listen list">
+                        <view class="left">三级类别</view>
+                        <view class="right">{{activityDetail.type3name}}</view>
+                    </view>
+                    <view class="read list">
+                        <view class="left">分值</view>
+                        <view class="right">{{activityDetail.score}}</view>
+                    </view>
+                    <view class="write list">
+                        <view class="left">创建者ID</view>
+                        <view class="right">{{activityDetail.createUserId}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+</view>

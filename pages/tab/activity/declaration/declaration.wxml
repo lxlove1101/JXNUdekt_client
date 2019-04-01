@@ -14,7 +14,7 @@
     </swiper-item>
   </swiper> -->
   <view class="cells">
-    <navigator class="item" hover-class='background-color: #fff;' wx:for="{{contentArr}}" wx:key="id" url="../detail/detail?item={{item.id}}">
+    <navigator class="item" hover-class='background-color: #fff;' wx:for="{{contentArr}}" wx:key="id" url="../detail/detail?activityId={{item.id}}">
       <image src="{{item.images[0]}}" mode="aspectFill" class='headimg' />
       <view class="meta">
         <text class="name">{{item.name}}</text>

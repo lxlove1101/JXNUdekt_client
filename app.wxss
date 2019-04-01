@@ -12,10 +12,17 @@ page{
   align-items: stretch;
 }
 .container {
+  /* display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  justify-content: space-between; */
+  position: relative;
+  flex: 1;
   display: flex;
   flex-direction: column;
   min-height: 100%;
-  justify-content: space-between;
+  padding-bottom: 100rpx;
+  box-sizing: border-box;
 }
 /* 加载容器样式 */
 .remind-box {

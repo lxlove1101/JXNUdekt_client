@@ -12,7 +12,7 @@
     </view>
   </view>
   <view class="cells">
-    <navigator class="item" hover-class='background-color: #fff;' wx:for="{{commitData}}" wx:key="id" url="../detail/detail?item={{item.id}}">
+    <navigator class="item" hover-class='background-color: #fff;' wx:for="{{commitData}}" wx:key="id" url="../detail/detail?activityId={{item.id}}">
       <image src="{{item.images[0]}}" mode="aspectFill" class='headimg' />
       <view class="meta">
         <text class="name">{{item.name}}</text>
