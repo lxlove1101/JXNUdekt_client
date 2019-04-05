@@ -1,2 +1,40 @@
-<!--pages/tab/activity/rank/rank.wxml-->
-<text>pages/tab/activity/rank/rank.wxml</text>
+<!-- pages/tab/activity/rank/rank.wxml -->
+<view class="container">
+    <view class="filter-flex">
+        <view class="filter-tab">
+            <text bindtap="setFilterPanel" data-findex="1" class="{{showfilterindex==1?'active':''}}">学期 </text>
+            <text bindtap="setFilterPanel" data-findex="2" class="{{showfilterindex==2?'active':''}}">规则</text>
+        </view>
+        <view class="filter-content" wx:if="{{showfilter}}">
+            <view class="filter-panel" wx:if="{{showfilterindex==1}}">
+                <view class="filter-panel-left">
+                    <view wx:for="{{filterdata.semester}}" wx:key="{{item.id}}" bindtap="setSemesterIndex" data-semesterindex="{{index}}" data-semesterid="{{item.id}}" class="{{semesterIndex==index?'active':''}}">
+                        {{item.title}}
+                    </view>
+                </view>
+            </view>
+            <view class="filter-panel" wx:if="{{showfilterindex==2}}">
+                <view class="filter-panel-left">
+                    <view wx:for="{{filterdata.type}}" wx:key="{{item.id}}" bindtap="setTypeIndex" data-typeindex="{{index}}" data-typeid="{{item.id}}" class="{{typeIndex==index?'active':''}}">
+                        {{item.title}}
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="filter-shadow" wx:if="{{showfilter}}" bindtap="hideFilter"></view>
+    </view>
+    <scroll-view class="container-body" scroll-y="true" scroll-top="{{scrolltop}}" bindscroll="scrollHandle" lower-threshold="50" bindscrolltolower="scrollLoading">
+        <view wx:if="{{rankList.length == 0}}" style="text-align: center;color: #666;margin-top: 20rpx;">没有数据</view>
+        <view class="service-list" wx:else>
+            <view class="service-item" wx:for="{{rankList}}" wx:key="{{item.id}}">
+                <view style="margin-left: 20rpx">{{index + 1}}</view>
+                <view style="margin-left: 180rpx;">{{item.username}}</view>
+                <view wx:if="{{typeId == 1}}" style="margin-left: 260rpx;">{{item.score}}</view>
+                <view wx:elif="{{typeId == 0}}" style="margin-left: 260rpx;">
+                    {{item.atyCount}}
+                </view>
+            </view>
+        </view>
+        <view class="gototop {{scrolltop>200?'active':''}}" bindtap="goToTop"></view>
+    </scroll-view>
+</view>

@@ -23,7 +23,7 @@ Page({
         { path: 'ks', openType: "navigate", name: '申报记录', img: "/images/index/icon3.png", color: "#e8d3ff"},
         { path: 'kjs', openType: "navigate", name: '待定', img: "/images/index/icon4.png", color: "#95e1d3"},
         { path: 'xs', openType: "navigate", name: '学院活动', img: "/images/index/icon5.png", color: "#a8d8ea"},
-        { path: 'ykt', openType: "navigate", name: '班级排行', img: "/images/index/icon6.png", color: "#aa96da"},
+        { path: '/pages/tab/activity/rank/rank', openType: "navigate", name: '班级排行', img: "/images/index/icon6.png", color: "#aa96da"},
         { path: 'jy', openType: "navigate", name: '待定', img: "/images/index/icon7.png", color: "#fcbad3"},
         { path: 'xf', openType: "navigate", name: '待定', img: "/images/index/icon8.png", color: "#ffd3b5"},
         { path: 'sdf', openType: "navigate", name: '资讯信息', img: "/images/index/icon9.png", color: "#dcedc2"},
