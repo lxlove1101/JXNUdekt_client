@@ -1,4 +1,4 @@
-// pages/tab/my/contact_us/contact_us.js
+// pages/tab/activity/rank/rank.js
 Page({
 
   /**

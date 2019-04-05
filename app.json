@@ -1,20 +1,21 @@
 {
   "pages": [
-    "pages/tab/search/search",
+    "pages/tab/my/my",
     "pages/login/login",
+    "pages/tab/my/issues/issues",
+    "pages/tab/search/search",
     "pages/tab/activity/declaration/declaration",
     "pages/tab/activity/submit/submit",
-    "pages/tab/my/my",
     "pages/tab/index/index",
     "pages/tab/activity/activity",
     "pages/tab/search/searchResult/searchResult",
     "pages/tab/my/editInfo/editInfo",
     "pages/tab/my/message/message",
     "pages/tab/my/setting/setting",
-    "pages/tab/my/contact_us/contact_us",
     "pages/logs/logs",
     "pages/tab/activity/detail/detail",
-    "pages/tab/my/detail/detail"
+    "pages/tab/my/detail/detail",
+    "pages/tab/activity/rank/rank"
   ],
   "window": {
     "backgroundTextStyle": "light",

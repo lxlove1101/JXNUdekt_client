@@ -27,7 +27,7 @@ Page({
         { path: 'jy', openType: "navigate", name: '待定', img: "/images/index/icon7.png", color: "#fcbad3"},
         { path: 'xf', openType: "navigate", name: '待定', img: "/images/index/icon8.png", color: "#ffd3b5"},
         { path: 'sdf', openType: "navigate", name: '资讯信息', img: "/images/index/icon9.png", color: "#dcedc2"},
-        { path: 'bx', openType: "navigate", name: '意见反馈', img: "/images/index/icon10.png", color: "#ffaaa6"}
+        { path: '/pages/tab/my/issues/issues', openType: "navigate", name: '意见反馈', img: "/images/index/icon10.png", color: "#ffaaa6"}
       ], [
         { path: 'cet', name: '测试', img: "", color: ""},
         { path: 'fw', name: "测试", img: "", color: ""}
