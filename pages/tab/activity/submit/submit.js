@@ -89,7 +89,7 @@ Page({
       url: getApp().data.url + '/COMMIT_ACTIVITY',
       method: "POST",
       data: {
-        "userId": _this.data.userDetail.userId,
+        "userId": _this.data.userDetail.id,
         "activityIds": _this.data.commitIds
       },
       success: res => {

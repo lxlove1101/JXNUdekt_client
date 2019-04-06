@@ -5,66 +5,71 @@ Page({
     showfilterindex: null, //显示哪个筛选类目
 
     semesterIndex: 0,
-    semesterId: 1,
+    semester: [],
+
+    commitedData: [],
+    score: 0,
 
     scrolltop: null, //滚动位置
   },
   onLoad: function () {
-    this.fetchFilterData();
-    this.fetchRankData();
+    this.fetchSemesterData();
   },
-  fetchFilterData: function () { //获取筛选条件
-    this.setData({
-      filterdata: {
-        "semester": [
-          {
-            "id": 1,
-            "title": "第一学期"
-          },
-          {
-            "id": 2,
-            "title": "第二学期"
-          },
-          {
-            "id": 3,
-            "title": "第三学期"
-          },
-          {
-            "id": 4,
-            "title": "第四学期"
-          },
-          {
-            "id": 5,
-            "title": "第五学期"
-          },
-          {
-            "id": 6,
-            "title": "第六学期"
-          },
-          {
-            "id": 7,
-            "title": "第七学期"
-          },
-          {
-            "id": 8,
-            "title": "第八学期"
-          },
-        ]
+
+  fetchSemesterData: function () {
+    const _this = this;
+    wx.request({
+      url: getApp().data.url + 'QUERY_SEMESTER',
+      method: 'GET',
+      success: res => {
+        console.log(res);
+        let semesterData = res.data.data.content;
+        let userGrade = getApp().data.userInfo.userId.substring(0, 4);
+        let userSemester = [];
+        let startIndex = 0;
+        for (let i = 0; i < semesterData.length; i++) {
+          if (semesterData[i].semester.substring(0, 4) == userGrade) {
+            startIndex = i;
+            break;
+          }
+        }
+        for (let j = startIndex; j < startIndex + 8; j++) {
+          userSemester.push(semesterData[j]);
+        }
+        _this.setData({
+          semester: userSemester
+        });
+        _this.fetchActivityCommitData();
+        _this.fetchScoreBySemester();
+      },
+      fail: err => {
+        console.log(err);
+        wx.showToast({
+          title: '服务器访问失败',
+          duration: 1000,
+          mask: true,
+          icon: 'none'
+        });
+      },
+      complete: data => {
+        console.log(getApp().data.url + 'QUERY_SEMESTER'),
+          console.log(data);
       }
     });
   },
 
-  fetchRankData: function () {
+  fetchActivityCommitData: function () {
     const _this = this;
+    console.log(typeof _this.data.semester[_this.data.semesterIndex].startTime);
     wx.request({
-      url: getApp().data.url + 'RANK_INFO_BY_CLASS?classId=' + getApp().data.userInfo.classId +
-        '&semester=' + _this.data.semesterId +
-        '&type=' + _this.data.typeId,
+      url: getApp().data.url + 'QUERY_ACTIVITY_COMMIT?startTime=' + /\d{4}-\d{1,2}-\d{1,2}/g.exec(_this.data.semester[_this.data.semesterIndex].startTime)[0]
+        + '&endTime=' + /\d{4}-\d{1,2}-\d{1,2}/g.exec(_this.data.semester[_this.data.semesterIndex].endTime)[0]
+        + '&userId=' + getApp().data.userInfo.id,
       method: 'GET',
       success: res => {
-        console.log(res);
+        console.log(res.data.data.content);
         _this.setData({
-          rankList: res.data.data.content
+          commitedData: res.data.data.content
         });
       },
       fail: err => {
@@ -77,10 +82,90 @@ Page({
         });
       },
       complete: data => {
-        console.log(getApp().data.url + 'RANK_INFO_BY_CLASS?classId=' + getApp().data.userInfo.classId +
-          '&semester=' + _this.data.semesterId +
-          '&type=' + _this.data.typeId);
         console.log(data);
+      }
+    });
+  },
+
+  fetchScoreBySemester: function () {
+    const _this = this;
+    let semester = this.data.semesterIndex + 1;
+    wx.request({
+      url: getApp().data.url + 'QUERY_SEMESTER_SCORE_BY_USER?userId=' + getApp().data.userInfo.id + '&semester=' + semester,
+      method: "GET",
+      success: res => {
+        console.log(res);
+        if (res.data.data.content) {
+          _this.setData({
+            score: res.data.data.content.score
+          });
+        }
+      },
+      fail: err => {
+        console.log(err);
+        wx.showToast({
+          title: '服务器访问失败',
+          duration: 1000,
+          mask: true,
+          icon: 'none'
+        });
+      },
+      complete: data => {
+        console.log(getApp().data.url + 'QUERY_SEMESTER_SCORE_BY_USER?userId=' + getApp().data.userInfo.id + '&semester=' + semester);
+        console.log(data);
+      }
+    })
+  },
+
+  cancelCommit: function (e) {
+    let id = e.currentTarget.dataset.id;
+    wx.showModal({
+      title: "提示",
+      content: "是否取消申报该活动?",
+      showCancel: true,
+      success: res => {
+        if (res.confirm) {
+          wx.request({
+            url: getApp().data.url + 'CANCEL_COMMIT_ACTIVITY_BY_ID/' + id,
+            method: "GET",
+            success: res => {
+              console.log(res);
+              if (res.data.code == "SUCCESS") {
+                wx.showToast({
+                  title: '成功',
+                  icon: 'success',
+                  duration: 1500,
+                  mask: true
+                });
+                setTimeout(() => { this.fetchActivityCommitData(); }, 1500);
+              } else {
+                wx.showToast({
+                  title: '失败',
+                  icon: 'none',
+                  duration: 1500,
+                  mask: true
+                });
+                setTimeout(() => { this.fetchActivityCommitData(); }, 1500);
+              }
+            },
+            fail: err => {
+              console.log(err);
+              wx.showToast({
+                title: '服务器访问失败',
+                duration: 1000,
+                mask: true,
+                icon: 'none'
+              });
+            },
+            complete: data => {
+              console.log(getApp().data.url + 'CANCEL_COMMIT_ACTIVITY_BY_ID/' + id);
+              console.log(data);
+            }
+
+          });
+        } else if (res.cancel) {
+
+        }
       }
     });
   },
@@ -106,10 +191,10 @@ Page({
     const dataset = e.currentTarget.dataset;
     this.setData({
       semesterIndex: dataset.semesterindex,
-      semesterId: dataset.semesterid,
     });
     this.hideFilter();
-    this.fetchRankData();
+    this.fetchActivityCommitData();
+    this.fetchScoreBySemester();
   },
 
   hideFilter: function () { //关闭筛选面板

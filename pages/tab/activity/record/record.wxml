@@ -2,14 +2,14 @@
 <view class="container">
     <view>
         <view class="filter-tab">
-            <text bindtap="setFilterPanel" data-findex="1" class="{{showfilterindex==1?'active':''}}">学期 </text>
-            <view style="width: 50%;">本学期已修学分:{{score}}</view>
+            <text bindtap="setFilterPanel" data-findex="1" class="{{showfilterindex==1?'active':''}}">学期</text>
+            <view style="width: 50%;">本学期已修学分: {{score}}</view>
         </view>
         <view class="filter-content" wx:if="{{showfilter}}">
             <view class="filter-panel" wx:if="{{showfilterindex==1}}">
                 <view class="filter-panel-left">
-                    <view wx:for="{{filterdata.semester}}" wx:key="{{item.id}}" bindtap="setSemesterIndex" data-semesterindex="{{index}}" data-semesterid="{{item.id}}" class="{{semesterIndex==index?'active':''}}">
-                        {{item.title}}
+                    <view wx:for="{{semester}}" wx:key="{{item.id}}" bindtap="setSemesterIndex" data-semesterindex="{{index}}" class="{{semesterIndex==index?'active':''}}">
+                        {{item.semester}}
                     </view>
                 </view>
             </view>
@@ -17,20 +17,25 @@
         <view class="filter-shadow" wx:if="{{showfilter}}" bindtap="hideFilter"></view>
     </view>
     <scroll-view class="container-body" scroll-y="true" scroll-top="{{scrolltop}}" bindscroll="scrollHandle" lower-threshold="50" bindscrolltolower="scrollLoading">
-        <view wx:if="{{rankList.length == 0}}" style="text-align: center;color: #666;margin-top: 20rpx;">没有数据</view>
+        <view wx:if="{{commitedData.length == 0}}" style="text-align: center;color: #666;margin-top: 20rpx;">
+            没有数据
+        </view>
         <view class="service-list" wx:else>
-            <navigator class="service-item" wx:for="{{servicelist}}" wx:key="{{item.id}}" url="../servicedetail/servicedetail?id={{item.id}}">
-				<view class="service-img">
-					<image src="{{item.imgurl}}" mode="aspectFill"></image>
-				</view>
-				<view class="service-text">
-					<view class="service-tite">{{item.name}}</view>
-					<view class="service-tags">
-						<text>{{item.tag}}</text>
-					</view>
-					<text class="service-city">服务城市：{{item.city}}</text>
-				</view>
-			</navigator>
+            <navigator class="service-item" hover-class='background-color: #fff;' wx:for="{{commitedData}}" wx:key="{{item.id}}" url="../detail/detail?activityId={{item.activityId}}">
+                <view class="service-img">
+                    <image src="{{item.image}}" mode="aspectFill"></image>
+                </view>
+                <view class="service-text">
+                    <view class="service-tite">{{item.activityName}}</view>
+                    <view class="service-tags" wx:if="{{item.checkStatus == 0}}" catchtap="cancelCommit" data-id="{{item.id}}">
+                        <text style="border: 1rpx solid #962F30;line-height: 1;color: #962F30;">取消申报</text>
+                    </view>
+                    <view class="service-tags" wx:else>
+                        <text style="border: 1rpx solid #666;line-height: 1;color: #666;">已审核</text>
+                    </view>
+                    <text class="service-city">修改时间：{{item.modifyTime}}</text>
+                </view>
+            </navigator>
         </view>
         <view class="gototop {{scrolltop>200?'active':''}}" bindtap="goToTop"></view>
     </scroll-view>

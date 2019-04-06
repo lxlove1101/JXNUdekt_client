@@ -16,7 +16,8 @@
     "pages/logs/logs",
     "pages/tab/activity/detail/detail",
     "pages/tab/my/detail/detail",
-    "pages/tab/activity/record/record"
+    "pages/tab/activity/record/record",
+    "pages/tab/activity/college/college"
   ],
   "window": {
     "backgroundTextStyle": "light",
