@@ -32,7 +32,7 @@ Page({
       },
       {
         "id": 5,
-        "tag": "rankOwnClass",
+        "tag": "rank",
         "name": "本班排行榜",
         "img": "/images/activity/icon5.png",
         "color": "#acc6aa"

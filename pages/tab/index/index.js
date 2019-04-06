@@ -20,7 +20,7 @@ Page({
       [
         { path: '/pages/tab/activity/declaration/declaration', openType: "navigate", name: '申报活动', img: "/images/index/icon1.png", color: "#f38181"},
         { path: '/pages/tab/search/search', openType: "switchTab", name: '活动搜索', img: "/images/index/icon2.png", color: "#fce38a"},
-        { path: 'ks', openType: "navigate", name: '申报记录', img: "/images/index/icon3.png", color: "#e8d3ff"},
+        { path: '/pages/tab/activity/record/record', openType: "navigate", name: '申报记录', img: "/images/index/icon3.png", color: "#e8d3ff"},
         { path: 'kjs', openType: "navigate", name: '待定', img: "/images/index/icon4.png", color: "#95e1d3"},
         { path: 'xs', openType: "navigate", name: '学院活动', img: "/images/index/icon5.png", color: "#a8d8ea"},
         { path: '/pages/tab/activity/rank/rank', openType: "navigate", name: '班级排行', img: "/images/index/icon6.png", color: "#aa96da"},

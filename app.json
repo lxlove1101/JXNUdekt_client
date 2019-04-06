@@ -15,7 +15,8 @@
     "pages/tab/my/setting/setting",
     "pages/logs/logs",
     "pages/tab/activity/detail/detail",
-    "pages/tab/my/detail/detail"
+    "pages/tab/my/detail/detail",
+    "pages/tab/activity/record/record"
   ],
   "window": {
     "backgroundTextStyle": "light",
