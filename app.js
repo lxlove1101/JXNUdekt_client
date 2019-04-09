@@ -1,7 +1,7 @@
 //app.js
 App({
   data: {
-    url: 'http://localhost/API/',
+    url: 'http://beatificcat.work:8888/API/',
     userInfo: {}
   },
   onLaunch: function() {
